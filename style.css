@@ -929,3 +929,17 @@ footer strong { color: var(--text); font-weight: 600; }
   .cv-inner { grid-template-columns: 1fr; gap: 2rem; }
   .cv-frame  { height: 420px; }
 }
+
+/* LinkedIn card */
+.contact-card--linkedin .cc-icon {
+  font-family: var(--oswald); font-size: 1rem; font-weight: 700;
+  color: #0a66c2; background: rgba(10,102,194,.15);
+  width: 32px; height: 32px; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.contact-card--linkedin:hover {
+  border-color: #0a66c2;
+  box-shadow: 0 0 12px rgba(10,102,194,.25);
+}
+.contact-card--linkedin:hover .cc-val { color: #3b8fe8; }
