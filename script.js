@@ -1,173 +1,103 @@
-/* ════════════════════════════════════
-   YANIS DUTILLEUL — script.js
-   Sans curseur custom
-════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  // Mobile Navigation Toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileClose = document.getElementById('mobileClose');
 
-'use strict';
+  if (hamburger && mobileNav && mobileClose) {
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.add('open');
+    });
 
-/* ── 1. NAVBAR scroll shrink + active link ── */
-(function () {
+    mobileClose.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+    });
+
+    // Close mobile nav when a link is clicked
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+      });
+    });
+  }
+
+  // Navbar Scroll Effect
   const navbar = document.getElementById('navbar');
-  if (!navbar) return;
-
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-
-  const sections = document.querySelectorAll('section[id]');
-  const links    = document.querySelectorAll('.nav-links a');
-
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        links.forEach(l => l.classList.toggle(
-          'active',
-          l.getAttribute('href') === '#' + entry.target.id
-        ));
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
       }
     });
-  }, { threshold: 0.45 });
+  }
 
-  sections.forEach(s => obs.observe(s));
-})();
+  // Reveal Animations on Scroll
+  const revealElements = document.querySelectorAll('.reveal');
+  const observerOptions = {
+    root: null, // viewport
+    rootMargin: '0px',
+    threshold: 0.1 // 10% of the element must be visible
+  };
 
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Stop observing once visible
+      }
+    });
+  }, observerOptions);
 
-/* ── 2. MOBILE NAV ── */
-(function () {
-  const nav  = document.getElementById('mobileNav');
-  const btn  = document.getElementById('hamburger');
-  const cls  = document.getElementById('mobileClose');
-  if (!nav || !btn) return;
-
-  const open  = () => { nav.classList.add('open');    document.body.style.overflow = 'hidden'; };
-  const close = () => { nav.classList.remove('open'); document.body.style.overflow = ''; };
-
-  btn.addEventListener('click', open);
-  cls?.addEventListener('click', close);
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-})();
-
-
-/* ── 3. SMOOTH SCROLL ── */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
-    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  revealElements.forEach(el => {
+    observer.observe(el);
   });
+
+  // Language and Bar Animations
+  const animateBars = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.lang-bar, .bar-fill').forEach(bar => {
+          const width = bar.dataset.w;
+          if (width) {
+            bar.style.width = `${width}%`;
+          }
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  const barContainers = document.querySelectorAll('.langs, .bars');
+  const barObserver = new IntersectionObserver(animateBars, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5 // Trigger when 50% of the container is visible
+  });
+
+  barContainers.forEach(container => {
+    barObserver.observe(container);
+  });
+
+  // Modal Mentions Légales
+  const openLegal = document.getElementById('openLegal');
+  const closeLegal = document.getElementById('closeLegal');
+  const legalModal = document.getElementById('legalModal');
+
+  if (openLegal && closeLegal && legalModal) {
+    openLegal.addEventListener('click', (e) => {
+      e.preventDefault();
+      legalModal.classList.add('open');
+      document.body.style.overflow = 'hidden'; // Empêche le scroll en arrière-plan
+    });
+
+    const closeModal = () => {
+      legalModal.classList.remove('open');
+      document.body.style.overflow = ''; 
+    };
+
+    closeLegal.addEventListener('click', closeModal);
+    legalModal.addEventListener('click', (e) => { if(e.target === legalModal) closeModal(); });
+  }
 });
-
-
-/* ── 4. REVEAL ON SCROLL ── */
-(function () {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-})();
-
-
-/* ── 5. LANG BARS ── */
-(function () {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.lang-bar').forEach((bar, i) => {
-          setTimeout(() => { bar.style.width = (bar.dataset.w || 0) + '%'; }, i * 120);
-        });
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  const block = document.querySelector('.langs');
-  if (block) obs.observe(block);
-})();
-
-
-/* ── 6. SKILL BARS ── */
-(function () {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.bar-fill').forEach((fill, i) => {
-          setTimeout(() => { fill.style.width = (fill.dataset.w || 0) + '%'; }, i * 90);
-        });
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.25 });
-
-  const block = document.querySelector('.bars');
-  if (block) obs.observe(block);
-})();
-
-
-/* ── 7. SKILL TAGS stagger ── */
-(function () {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.tags-wrap span, .proj-stack span').forEach((el, i) => {
-          el.style.opacity   = '0';
-          el.style.transform = 'translateY(6px)';
-          setTimeout(() => {
-            el.style.transition = 'opacity .3s, transform .3s, border-color .2s, color .2s';
-            el.style.opacity    = '1';
-            el.style.transform  = 'translateY(0)';
-          }, i * 50);
-        });
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-
-  document.querySelectorAll('.skill-bloc, .proj-item').forEach(el => obs.observe(el));
-})();
-
-
-/* ── 8. HERO VALUES highlight cycle ── */
-(function () {
-  const spans = document.querySelectorAll('.badge-text');
-  if (!spans.length) return;
-
-  let idx = 0;
-  spans.forEach(s => { s.style.transition = 'color .4s'; });
-
-  setInterval(() => {
-    spans.forEach(s => s.style.color = '');
-    spans[idx].style.color = 'var(--or-l)';
-    idx = (idx + 1) % spans.length;
-  }, 2000);
-})();
-
-
-/* ── 9. PROJECT ITEMS — hover number highlight ── */
-/* Géré en CSS déjà, rien à faire en JS */
-
-
-/* ── 10. FORM ITEMS stagger ── */
-(function () {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.form-item').forEach((el, i) => {
-          el.style.opacity   = '0';
-          el.style.transform = 'translateY(12px)';
-          setTimeout(() => {
-            el.style.transition = 'opacity .5s, transform .5s';
-            el.style.opacity    = '1';
-            el.style.transform  = 'translateY(0)';
-          }, i * 160);
-        });
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-
-  const form = document.querySelector('.formation');
-  if (form) obs.observe(form);
-})();
