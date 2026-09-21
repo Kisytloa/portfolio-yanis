@@ -726,8 +726,9 @@ footer strong { color: var(--text); font-weight: 600; } /* Keep styles */
   opacity: 0; animation: up .6s .5s forwards;
 }
 
-/* ── Formation (section séparée) ── */
-#formation { background: var(--bg); }
+/* ── Expérience & Formation ── */
+#experience { background: var(--bg); }
+#formation  { background: var(--card); }
 .form-list { display: flex; flex-direction: column; gap: 2rem; margin-top: 1.5rem; }
 .form-item {
   display: grid; grid-template-columns: 140px 1fr;
@@ -936,9 +937,85 @@ footer strong { color: var(--text); font-weight: 600; } /* Keep styles */
   line-height: 1.8; margin-bottom: 1rem;
 }
 
-/* Sections académiques et personnelles */
-#academiques { background: var(--card); }
-#personnels  { background: var(--bg); }
+/* Panneau d'information pour expérience pro sans image */
+.proj-card-badge-panel {
+  background: var(--input-bg);
+  border: 1px solid var(--form-item-border);
+  border-radius: 8px;
+  padding: 2.2rem 2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,.4);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  transition: border-color .3s ease;
+}
+.proj-card-badge-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--primary));
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.proj-card:hover .proj-card-badge-panel {
+  border-color: var(--primary);
+}
+.proj-badge-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.proj-badge-num {
+  font-family: var(--cinzel);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.proj-badge-pill {
+  font-family: var(--oswald);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: var(--primary-alpha-15);
+  border: 1px solid var(--primary-alpha-30);
+  padding: .25rem .7rem;
+  border-radius: 4px;
+}
+.proj-badge-org {
+  font-family: var(--cinzel);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+.proj-badge-details {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  border-top: 1px solid var(--form-item-border);
+  padding-top: 1.1rem;
+}
+.proj-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--alice);
+  font-size: .85rem;
+}
+.proj-badge-k { color: var(--muted); }
+.proj-badge-v { color: var(--text); font-weight: 600; }
+.proj-badge-v.gold { color: var(--gold); font-family: var(--oswald); }
+
+/* Sections professionnelle, académiques et personnelles */
+#professionnels { background: var(--bg); }
+#academiques    { background: var(--card); }
+#personnels     { background: var(--bg); }
+#professionnels .section-tag,
 #academiques .section-tag,
 #personnels  .section-tag { margin-bottom: 1.5rem; }
 
