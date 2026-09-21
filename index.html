@@ -4,12 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="google-site-verification" content="TmmiE5WnkHJF2FdghV4OZSdoodd4v6s-AmvVGoYvjyQ" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yanis Dutilleul — Accueil</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Oswald:wght@300;400;600&family=Alice&display=swap" rel="stylesheet" />
+  <title>Yanis Dutilleul — Portfolio Data & Informatique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/x-icon" href="Logo Yanis-Photoroom.png">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- TOP SCROLL PROGRESS BAR -->
+  <div id="scroll-progress"></div>
 
   <!-- MOBILE NAV -->
   <div class="mobile-nav" id="mobileNav">
@@ -19,15 +24,20 @@
     <a href="contact.html">Contact</a>
   </div>
 
-  <!-- NAV -->
+  <!-- FLOATING GLASS NAVBAR -->
   <nav id="navbar">
-    <a href="index.html" class="nav-logo">YD</a>
+    <a href="index.html" class="nav-logo">
+      YD<span class="nav-logo-dot"></span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Accueil</a></li>
       <li><a href="projets.html">Projets</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <a href="contact.html" class="nav-cta">Me recruter</a>
+    <a href="contact.html" class="nav-cta">
+      <span>Me recruter</span>
+      <span style="font-size: 0.9rem;">→</span>
+    </a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -35,17 +45,44 @@
 
   <!-- ═══ HERO ═══ -->
   <section id="hero">
-    <div class="hero-inner">
-      <p class="hero-kicker">Étudiant en informatique · Reims</p>
-      <h1>
-        <span class="line-wrap"><span class="reveal-word">Yanis</span></span>
-        <span class="line-wrap"><span class="reveal-word delay-1">Dutilleul</span></span>
-      </h1>
-      <p class="hero-role">3ème année BUT Informatique — Parcours DATA (Administration, Gestion &amp; Exploitation des données)</p>
-      <p class="hero-seek">À la recherche d'une alternance · 2026–2027</p>
-      <div class="hero-actions">
-        <a href="projets.html" class="btn-fill">Voir mes projets</a>
-        <a href="contact.html" class="btn-outline">Me contacter</a>
+    <div class="hero-badge reveal">
+      <span class="pulse-dot"></span>
+      <span>Recherche d'alternance · BUT 3 DATA 2026–2027</span>
+    </div>
+
+    <h1 class="reveal">
+      Yanis <span class="hero-gradient-text">Dutilleul</span>
+    </h1>
+
+    <p class="hero-role reveal">
+      3ème année de BUT Informatique — Spécialisation <strong>DATA</strong>
+    </p>
+    <p class="hero-seek reveal">
+      <span>✦</span> Administration, Gestion &amp; Exploitation des Données · Reims <span>✦</span>
+    </p>
+
+    <div class="hero-actions reveal">
+      <a href="projets.html" class="btn-fill">Explorer mes projets →</a>
+      <a href="contact.html" class="btn-outline">Me contacter</a>
+    </div>
+
+    <!-- Animated Key Metrics -->
+    <div class="hero-stats reveal">
+      <div class="stat-item">
+        <span class="stat-num" data-target="3" data-suffix="e">0</span>
+        <span class="stat-label">Année BUT Info Data</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="12" data-suffix=" sem.">0</span>
+        <span class="stat-label">Stage Econox ERP/BI</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="5" data-suffix="+">0</span>
+        <span class="stat-label">Projets d'envergure</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="100" data-suffix="%">0</span>
+        <span class="stat-label">Disponibilité alternance</span>
       </div>
     </div>
   </section>
@@ -54,25 +91,35 @@
   <section id="about">
     <div class="section-tag">// Profil</div>
     <div class="about-grid">
-      <div class="about-left reveal">
-        <h2>Qui<br><em>suis-je ?</em></h2>
-        <p>Étudiant en 3ème année de BUT Informatique spécialisé en <strong>DATA</strong>, curieux et rigoureux. Fort d'une expérience concrète en Business Intelligence en entreprise, j'aime exploiter et valoriser les données pour éclairer la prise de décision.</p>
-        <p>Ma <strong>rigueur</strong> et mon <strong>autonomie</strong> me permettent de progresser rapidement, tandis que mon esprit d'équipe facilite mon intégration au sein de structures collaboratives.</p>
-        <div class="soft-skills">
-          <span>⚡ Esprit d'équipe</span>
-          <span>⚡ Rigueur &amp; Organisation</span>
-          <span>⚡ Capacité d'adaptation</span>
-          <span>⚡ Curiosité technologique</span>
+      <div class="about-card about-left reveal">
+        <h2 class="section-title">Passionné par la <em>Data &amp; le Code.</em></h2>
+        <p>Étudiant en 3ème année de BUT Informatique à l'IUT de Reims, je me spécialise dans la valorisation, l'administration et l'exploitation des données.</p>
+        <p>Fort d'une expérience concrète de <strong>12 semaines en entreprise chez Econox Production</strong>, j'ai développé une solide expertise dans l'extraction de données depuis un progiciel ERP et la réalisation de tableaux de bord décisionnels interactifs sous <strong>Power BI</strong>.</p>
+        <p>Ma rigueur, mon esprit d'analyse et ma capacité d'apprentissage rapide me permettent de transformer des flux de données complexes en leviers de performance stratégiques.</p>
+
+        <div class="badges-group">
+          <div class="badges-label">Soft skills &amp; ATOUTS</div>
+          <div class="tags-wrap">
+            <span>⚡ Rigueur &amp; Organisation</span>
+            <span>⚡ Analyse &amp; Esprit critique</span>
+            <span>⚡ Esprit d'équipe</span>
+            <span>⚡ Adaptabilité rapide</span>
+            <span>⚡ Curiosité technologique</span>
+          </div>
         </div>
-        <div class="interests">
-          <span>🎮 E-sport</span>
-          <span>🏀 Basket-Ball</span>
-          <span>✈️ Voyage</span>
-          <span>📋 Organisation</span>
+
+        <div class="badges-group" style="margin-top: 1.25rem;">
+          <div class="badges-label">Centres d'intérêt</div>
+          <div class="tags-wrap">
+            <span>🎮 E-sport</span>
+            <span>🏀 Basket-Ball</span>
+            <span>✈️ Voyages</span>
+            <span>📋 Gestion de projets</span>
+          </div>
         </div>
       </div>
 
-      <div class="about-right reveal">
+      <div class="about-card about-right reveal">
         <div class="info-table">
           <div class="info-row">
             <span class="info-k">Localisation</span>
@@ -80,17 +127,19 @@
           </div>
           <div class="info-row">
             <span class="info-k">Formation</span>
-            <span class="info-v">BUT Informatique 3 (DATA)</span>
+            <span class="info-v">BUT 3 Informatique (DATA)</span>
           </div>
           <div class="info-row">
             <span class="info-k">Disponibilité</span>
-            <span class="info-v gold">Alternance 2026–2027</span>
+            <span class="info-v highlight">Alternance 2026–2027</span>
           </div>
           <div class="info-row">
             <span class="info-k">Email</span>
-            <span class="info-v small">yanisdutilleul21112006@gmail.com</span>
+            <span class="info-v" style="font-size: 0.8rem;">yanisdutilleul21112006@gmail.com</span>
           </div>
         </div>
+
+        <div class="badges-label" style="margin-bottom: 0.75rem;">Langues</div>
         <div class="langs">
           <div class="lang-row">
             <span>Français</span>
@@ -99,7 +148,7 @@
           </div>
           <div class="lang-row">
             <span>Anglais</span>
-            <div class="lang-track"><div class="lang-bar" data-w="70"></div></div>
+            <div class="lang-track"><div class="lang-bar" data-w="75"></div></div>
             <span class="lang-lvl">B2</span>
           </div>
           <div class="lang-row">
@@ -115,52 +164,61 @@
   <!-- ═══ COMPÉTENCES ═══ -->
   <section id="skills">
     <div class="section-tag">// Compétences</div>
-    <h2 class="reveal">Mes<br><em>compétences techniques.</em></h2>
-    <a href="https://docs.google.com/spreadsheets/d/1V5MSTwOdySupA17iOOHL-KxqkTmcdY-EEjulKrXPCmY/edit?usp=sharing" target="_blank" class="btn-outline reveal" style="margin-bottom: 2.5rem; display: inline-block;">Voir mon tableau de compétences détaillé</a>
+    <h2 class="section-title reveal">Stack technique &amp; <em>Savoir-faire.</em></h2>
+    
+    <a href="https://docs.google.com/spreadsheets/d/1V5MSTwOdySupA17iOOHL-KxqkTmcdY-EEjulKrXPCmY/edit?usp=sharing" target="_blank" class="btn-outline reveal" style="margin-bottom: 2.5rem; display: inline-flex;">
+      📊 Consulter mon tableau de compétences détaillé ↗
+    </a>
+
     <div class="skills-grid">
       <div class="skill-bloc reveal">
-        <div class="skill-bloc-title">Données &amp; Analyse</div>
+        <div class="skill-bloc-title">📊 Données &amp; Décisionnel</div>
         <div class="tags-wrap">
-          <span>Power BI</span><span>SQL</span><span>DAX</span><span>Power Query</span>
-          <span>Pandas</span><span>NumPy</span><span>Oracle</span><span>Access</span>
+          <span>Power BI</span><span>DAX</span><span>Power Query</span>
+          <span>SQL</span><span>Oracle</span><span>PostgreSQL</span>
+          <span>Pandas</span><span>NumPy</span><span>Access</span>
         </div>
       </div>
+
       <div class="skill-bloc reveal">
-        <div class="skill-bloc-title">Développement</div>
+        <div class="skill-bloc-title">💻 Développement &amp; Web</div>
         <div class="tags-wrap">
-          <span>Python</span><span>PHP</span><span>JavaScript</span>
-          <span>HTML5</span><span>CSS3</span><span>React</span>
-          <span>Node.js</span><span>Symfony</span>
+          <span>Python</span><span>PHP</span><span>Symfony</span>
+          <span>JavaScript</span><span>HTML5 / CSS3</span>
+          <span>React</span><span>Node.js</span><span>API REST</span>
         </div>
       </div>
+
       <div class="skill-bloc reveal">
-        <div class="skill-bloc-title">Outils &amp; Méthodes</div>
+        <div class="skill-bloc-title">🛠️ Outils, DevOps &amp; Méthodes</div>
         <div class="tags-wrap">
-          <span>Docker</span><span>Git</span><span>VS Code</span>
-          <span>PyCharm</span><span>PhPStorm</span><span>MS Project</span>
-          <span>Gantt Project</span><span>MS Planner</span>
+          <span>Docker</span><span>Git / GitHub</span><span>VS Code</span>
+          <span>PyCharm</span><span>PhpStorm</span><span>GitHub Actions</span>
+          <span>MS Project</span><span>Gantt</span><span>Agile / Scrum</span>
         </div>
       </div>
     </div>
+
+    <!-- Jauges de maîtrise -->
     <div class="bars reveal">
       <div class="bar-item">
         <div class="bar-meta"><span>Business Intelligence &amp; Power BI</span><span class="bar-pct">85%</span></div>
         <div class="bar-track"><div class="bar-fill" data-w="85"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-meta"><span>SQL / Bases de données &amp; ERP</span><span class="bar-pct">85%</span></div>
+        <div class="bar-meta"><span>Bases de données &amp; SQL (Oracle, MySQL, PostgreSQL)</span><span class="bar-pct">85%</span></div>
         <div class="bar-track"><div class="bar-fill" data-w="85"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-meta"><span>Python / Data</span><span class="bar-pct">80%</span></div>
+        <div class="bar-meta"><span>Python pour la Data (Pandas, NumPy, Scripts)</span><span class="bar-pct">80%</span></div>
         <div class="bar-track"><div class="bar-fill" data-w="80"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-meta"><span>HTML / CSS</span><span class="bar-pct">90%</span></div>
-        <div class="bar-track"><div class="bar-fill" data-w="90"></div></div>
+        <div class="bar-meta"><span>Développement Web &amp; Interfaces (HTML/CSS, JS)</span><span class="bar-pct">85%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="85"></div></div>
       </div>
       <div class="bar-item">
-        <div class="bar-meta"><span>PHP / Symfony</span><span class="bar-pct">75%</span></div>
+        <div class="bar-meta"><span>Back-End &amp; Frameworks (PHP, Symfony)</span><span class="bar-pct">75%</span></div>
         <div class="bar-track"><div class="bar-fill" data-w="75"></div></div>
       </div>
     </div>
@@ -168,19 +226,23 @@
 
   <!-- ═══ EXPÉRIENCE PROFESSIONNELLE ═══ -->
   <section id="experience">
-    <div class="section-tag">// Expérience professionnelle</div>
-    <h2 class="reveal">Mon parcours<br><em>en entreprise.</em></h2>
-    <div class="form-list">
-      <div class="form-item reveal">
-        <span class="form-year">2026 · 12 sem.</span>
+    <div class="section-tag">// Expérience en entreprise</div>
+    <h2 class="section-title reveal">Parcours <em>professionnel.</em></h2>
+
+    <div class="timeline">
+      <div class="timeline-card reveal">
+        <div class="timeline-meta">
+          <span class="timeline-year">2026</span>
+          <span class="timeline-badge">Stage · 12 semaines</span>
+        </div>
         <div>
-          <div class="form-title">Stage Business Intelligence &amp; Data — Econox Production</div>
-          <div class="form-sub" style="margin-bottom: .8rem;">Stage de 2ème année de BUT Informatique · 12 semaines</div>
-          <p style="font-family: var(--alice); font-size: .88rem; color: var(--muted); line-height: 1.7; margin-bottom: .9rem;">
-            Extraction de données métier depuis l'ERP de l'entreprise, modélisation relationnelle et création de tableaux de bord interactifs Power BI pour le suivi des indicateurs de performance (KPI) et l'aide à la décision.
+          <div class="timeline-title">Stage Business Intelligence &amp; Data — Econox Production</div>
+          <div class="timeline-sub">Econox Production · Stage de 2ème année BUT Informatique</div>
+          <p class="timeline-desc">
+            Prise en charge intégrale d'un projet décisionnel : extraction et transformation de données métier directement depuis l'ERP d'entreprise, modélisation relationnelle et création de tableaux de bord interactifs sous <strong>Power BI</strong> pour l'optimisation du pilotage et l'aide à la décision.
           </p>
           <div class="tags-wrap">
-            <span>Power BI</span><span>ERP</span><span>SQL</span><span>DAX</span><span>Power Query</span><span>Reporting</span>
+            <span>Power BI</span><span>ERP</span><span>SQL</span><span>DAX</span><span>Power Query</span><span>Reporting interactif</span>
           </div>
         </div>
       </div>
@@ -190,20 +252,34 @@
   <!-- ═══ FORMATION ═══ -->
   <section id="formation">
     <div class="section-tag">// Formation</div>
-    <h2 class="reveal">Parcours<br><em>académique.</em></h2>
-    <div class="form-list">
-      <div class="form-item reveal">
-        <span class="form-year">2024 — 2027</span>
+    <h2 class="section-title reveal">Cursus <em>académique.</em></h2>
+
+    <div class="timeline">
+      <div class="timeline-card reveal">
+        <div class="timeline-meta">
+          <span class="timeline-year">2024 — 2027</span>
+          <span class="timeline-badge" style="color: var(--cyan); background: rgba(6, 182, 212, 0.1); border-color: rgba(6, 182, 212, 0.25);">En cours</span>
+        </div>
         <div>
-          <div class="form-title">BUT Informatique — 3ème année (Parcours DATA)</div>
-          <div class="form-sub">Administration, Gestion &amp; Exploitation des données · IUT de Reims-Châlons-Charleville</div>
+          <div class="timeline-title">BUT Informatique — 3ème année (Parcours DATA)</div>
+          <div class="timeline-sub">IUT de Reims-Châlons-Charleville · Université de Reims Champagne-Ardenne</div>
+          <p class="timeline-desc">
+            Parcours Administration, Gestion et Exploitation des Données. Apprentissage approfondi de la gouvernance des données, Business Intelligence, modélisation de bases massives, développement full-stack et conduite de projets agiles.
+          </p>
         </div>
       </div>
-      <div class="form-item reveal">
-        <span class="form-year">2024</span>
+
+      <div class="timeline-card reveal">
+        <div class="timeline-meta">
+          <span class="timeline-year">2024</span>
+          <span class="timeline-badge" style="color: var(--amber); background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.25);">Diplômé</span>
+        </div>
         <div>
-          <div class="form-title">Baccalauréat Technologique STI2D</div>
-          <div class="form-sub">Spécialité SIN · Lycée Saint Jean Baptiste de La Salle, Reims</div>
+          <div class="timeline-title">Baccalauréat Technologique STI2D</div>
+          <div class="timeline-sub">Lycée Saint Jean-Baptiste de La Salle · Reims</div>
+          <p class="timeline-desc">
+            Spécialité Systèmes d'Information et Numérique (SIN). Initiation à la programmation, aux architectures logicielles et aux réseaux.
+          </p>
         </div>
       </div>
     </div>
@@ -211,7 +287,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <span>Yanis <strong>Dutilleul</strong> · 2026</span>
+    <span>© 2026 Yanis <strong>Dutilleul</strong> · Portfolio Data &amp; Informatique</span>
     <nav class="footer-nav">
       <a href="index.html">Accueil</a>
       <a href="projets.html">Projets</a>
@@ -227,12 +303,12 @@
       <h2>Éditeur du site</h2>
       <p><strong>Nom :</strong> Yanis Dutilleul</p>
       <p><strong>Adresse e-mail :</strong> yanisdutilleul21112006@gmail.com</p>
-      <p><strong>Statut :</strong> Étudiant</p>
+      <p><strong>Statut :</strong> Étudiant en BUT Informatique</p>
 
       <h2>Hébergement</h2>
       <p>Ce site est hébergé par <strong>Vercel Inc.</strong></p>
       <p><strong>Adresse :</strong> 440 N Barranca Ave #4133, Covina, CA 91723, USA</p>
-      <p><strong>Site web :</strong> <a href="https://yanis-dut.vercel.app" target="_blank">https://vercel.com/</a></p>
+      <p><strong>Site web :</strong> <a href="https://yanis-dut.vercel.app" target="_blank" style="color: var(--cyan);">https://vercel.com/</a></p>
 
       <h2>Propriété intellectuelle</h2>
       <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés.</p>

@@ -4,11 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yanis Dutilleul — Mentions Légales</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Oswald:wght@300;400;600&family=Alice&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/x-icon" href="Logo Yanis-Photoroom.png">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- TOP SCROLL PROGRESS BAR -->
+  <div id="scroll-progress"></div>
 
   <!-- MOBILE NAV -->
   <div class="mobile-nav" id="mobileNav">
@@ -19,68 +24,79 @@
     <a href="mentions-legales.html" class="active">Mentions Légales</a>
   </div>
 
-  <!-- NAV -->
+  <!-- FLOATING GLASS NAVBAR -->
   <nav id="navbar">
-    <a href="index.html" class="nav-logo">YD</a>
+    <a href="index.html" class="nav-logo">
+      YD<span class="nav-logo-dot"></span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="projets.html">Projets</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="mentions-legales.html" class="active">Mentions Légales</a></li>
     </ul>
-    <a href="contact.html" class="nav-cta">Me recruter</a>
+    <a href="contact.html" class="nav-cta">
+      <span>Me recruter</span>
+      <span style="font-size: 0.9rem;">→</span>
+    </a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
   <!-- ═══ PAGE HEADER ═══ -->
-  <div class="page-header">
-    <p class="hero-kicker">Informations Légales</p>
-    <h1 class="page-title">
-      <span class="line-wrap"><span class="reveal-word">Mentions</span></span>
-      <span class="line-wrap"><span class="reveal-word delay-1">Légales.</span></span>
+  <header class="page-header">
+    <div class="section-tag">// Informations Légales</div>
+    <h1 class="page-title reveal">
+      Mentions <span class="hero-gradient-text">Légales.</span>
     </h1>
-    <p class="page-desc">Informations concernant l'édition et l'hébergement de ce site.</p>
-  </div>
+    <p class="page-desc reveal">
+      Informations juridiques concernant l'édition et l'hébergement de ce site personnel.
+    </p>
+  </header>
 
-  <!-- ═══ MENTIONS LÉGALES ═══ -->
-  <section id="legal-mentions" class="section-content">
-    <div class="reveal">
-      <h2>Éditeur du site</h2>
-      <p><strong>Nom :</strong> Yanis Dutilleul</p>
-      <p><strong>Adresse e-mail :</strong> yanisdutilleul21112006@gmail.com</p>
-      <p><strong>Statut :</strong> Étudiant</p>
-    </div>
+  <!-- ═══ MENTIONS LÉGALES CONTENT ═══ -->
+  <main style="max-width: 800px; margin: 0 auto; padding: 0 1.5rem 4rem;">
+    <div class="about-card reveal" style="display: flex; flex-direction: column; gap: 2rem;">
+      <div>
+        <h2 style="font-size: 1.35rem; color: #fff; margin-bottom: 0.65rem;">1. Éditeur du site</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 0.35rem;"><strong>Nom :</strong> Yanis Dutilleul</p>
+        <p style="color: var(--text-secondary); margin-bottom: 0.35rem;"><strong>Adresse e-mail :</strong> <a href="mailto:yanisdutilleul21112006@gmail.com" style="color: var(--cyan);">yanisdutilleul21112006@gmail.com</a></p>
+        <p style="color: var(--text-secondary);"><strong>Statut :</strong> Étudiant en 3ème année de BUT Informatique (Parcours DATA)</p>
+      </div>
 
-    <div class="reveal">
-      <h2>Hébergement</h2>
-      <p>Ce site est hébergé par <strong>Vercel Inc.</strong>.</p>
-      <p><strong>Site web :</strong> <a href="https://yanis-dut.vercel.app" target="_blank">https://vercel.com/</a></p>
-    </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem;">
+        <h2 style="font-size: 1.35rem; color: #fff; margin-bottom: 0.65rem;">2. Hébergement</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 0.35rem;">Ce site est hébergé par <strong>Vercel Inc.</strong></p>
+        <p style="color: var(--text-secondary); margin-bottom: 0.35rem;"><strong>Adresse :</strong> 440 N Barranca Ave #4133, Covina, CA 91723, USA</p>
+        <p style="color: var(--text-secondary);"><strong>Site web :</strong> <a href="https://vercel.com/" target="_blank" style="color: var(--cyan);">https://vercel.com/</a></p>
+      </div>
 
-    <div class="reveal">
-      <h2>Propriété intellectuelle</h2>
-      <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.</p>
-      <p>La reproduction de tout ou partie de ce site sur un support électronique quel qu'il soit est formellement interdite sauf autorisation expresse du directeur de la publication.</p>
-    </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem;">
+        <h2 style="font-size: 1.35rem; color: #fff; margin-bottom: 0.65rem;">3. Propriété intellectuelle</h2>
+        <p style="color: var(--text-secondary); line-height: 1.75;">
+          L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.
+        </p>
+      </div>
 
-    <div class="reveal">
-      <h2>Données personnelles</h2>
-      <p>Ce site ne collecte aucune donnée personnelle identifiable de ses visiteurs. Aucune information n'est stockée à des fins de suivi ou d'analyse.</p>
+      <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem;">
+        <h2 style="font-size: 1.35rem; color: #fff; margin-bottom: 0.65rem;">4. Données personnelles</h2>
+        <p style="color: var(--text-secondary); line-height: 1.75;">
+          Ce site ne collecte aucune donnée personnelle identifiable de ses visiteurs. Aucune information n'est stockée à des fins de suivi publicitaire ou d'analyse intrusive.
+        </p>
+      </div>
     </div>
-  </section>
+  </main>
 
   <!-- FOOTER -->
   <footer>
-    <span>Yanis <strong>Dutilleul</strong> · 2026</span>
+    <span>© 2026 Yanis <strong>Dutilleul</strong> · Portfolio Data &amp; Informatique</span>
     <nav class="footer-nav">
       <a href="index.html">Accueil</a>
       <a href="projets.html">Projets</a>
       <a href="contact.html">Contact</a>
       <a href="mentions-legales.html">Mentions Légales</a>
     </nav>
-    <span class="footer-motto">COURAGE · PERSÉVÉRANCE · CONFIANCE</span>
   </footer>
 
   <script src="script.js"></script>

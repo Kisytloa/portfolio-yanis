@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yanis Dutilleul — Projets</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Oswald:wght@300;400;600&family=Alice&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="Logo Yanis-Photoroom.png">
+  <title>Yanis Dutilleul — Projets &amp; Réalisations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="Logo Yanis-Photoroom.png">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- TOP SCROLL PROGRESS BAR -->
+  <div id="scroll-progress"></div>
 
   <!-- MOBILE NAV -->
   <div class="mobile-nav" id="mobileNav">
@@ -18,49 +23,62 @@
     <a href="contact.html">Contact</a>
   </div>
 
-  <!-- NAV -->
+  <!-- FLOATING GLASS NAVBAR -->
   <nav id="navbar">
-    <a href="index.html" class="nav-logo">YD</a>
+    <a href="index.html" class="nav-logo">
+      YD<span class="nav-logo-dot"></span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="projets.html" class="active">Projets</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <a href="contact.html" class="nav-cta">Me recruter</a>
+    <a href="contact.html" class="nav-cta">
+      <span>Me recruter</span>
+      <span style="font-size: 0.9rem;">→</span>
+    </a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
   <!-- ═══ PAGE HEADER ═══ -->
-  <div class="page-header">
-    <p class="hero-kicker">Portfolio</p>
-    <h1 class="page-title">
-      <span class="line-wrap"><span class="reveal-word">Mes</span></span>
-      <span class="line-wrap"><span class="reveal-word delay-1">Projets.</span></span>
+  <header class="page-header">
+    <div class="section-tag">// Portfolio</div>
+    <h1 class="page-title reveal">
+      Mes <span class="hero-gradient-text">Réalisations.</span>
     </h1>
-    <p class="page-desc">Projets en entreprise, académiques et personnels — de la data au code en production.</p>
-  </div>
+    <p class="page-desc reveal">
+      Projets d'entreprise, académiques et personnels — de la valorisation de flux de données au code en production.
+    </p>
 
-  <!-- ═══ EXPÉRIENCE EN ENTREPRISE ═══ -->
-  <section id="professionnels">
-    <div class="section-tag">// Expérience en entreprise</div>
+    <!-- DYNAMIC FILTER BUTTONS -->
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">Tous les projets</button>
+      <button class="filter-btn" data-filter="data-bi">📊 Data &amp; Business Intelligence</button>
+      <button class="filter-btn" data-filter="fullstack">💻 Web &amp; Full-Stack</button>
+      <button class="filter-btn" data-filter="scripts">⚡ Automatisation &amp; Scripts</button>
+    </div>
+  </header>
 
-    <!-- Econox Production -->
-    <div class="proj-card reveal">
+  <!-- ═══ PROJECTS LIST ═══ -->
+  <main class="projects-container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem;">
+
+    <!-- 01 - Econox Production (Experience Pro) -->
+    <article class="proj-card reveal" data-category="data-bi">
       <div class="proj-card-badge-panel">
         <div class="proj-badge-top">
-          <div class="proj-badge-num">01</div>
-          <span class="proj-badge-pill">Stage 12 sem.</span>
+          <span class="proj-badge-num">01</span>
+          <span class="proj-badge-pill">Stage · 12 semaines</span>
         </div>
         <div class="proj-badge-org">Econox Production</div>
         <div class="proj-badge-details">
           <div class="proj-badge-row">
-            <span class="proj-badge-k">Rôle</span>
-            <span class="proj-badge-v">Data / Business Intelligence</span>
+            <span class="proj-badge-k">Mission</span>
+            <span class="proj-badge-v">Business Intelligence &amp; Data</span>
           </div>
           <div class="proj-badge-row">
-            <span class="proj-badge-k">Contexte</span>
+            <span class="proj-badge-k">Cadre</span>
             <span class="proj-badge-v">Stage BUT 2 Informatique</span>
           </div>
           <div class="proj-badge-row">
@@ -68,7 +86,7 @@
             <span class="proj-badge-v gold">12 semaines</span>
           </div>
           <div class="proj-badge-row">
-            <span class="proj-badge-k">Outil clé</span>
+            <span class="proj-badge-k">Outil phare</span>
             <span class="proj-badge-v">Power BI &amp; ERP</span>
           </div>
         </div>
@@ -77,204 +95,190 @@
         <div class="proj-tags">
           <span class="ptag">Business Intelligence</span>
           <span class="ptag">ERP</span>
-          <span class="ptag">Data</span>
-          <span class="ptag">Entreprise</span>
+          <span class="ptag">Power BI</span>
+          <span class="ptag">Expérience Entreprise</span>
         </div>
         <h3>Econox Production — Tableaux de bord Power BI &amp; Extraction ERP</h3>
-        <p>Projet décisionnel complet mené durant 12 semaines chez Econox Production. Prise en charge de la chaîne de valorisation des données : extraction depuis l'ERP métier, modélisation relationnelle et création de tableaux de bord interactifs Power BI pour le pilotage d'activité et l'aide à la décision.</p>
+        <p>Projet décisionnel complet mené durant 12 semaines chez Econox Production. Prise en charge de toute la chaîne de valeur : extraction automatisée des données de l'ERP métier, modélisation relationnelle et conception de tableaux de bord interactifs Power BI pour le pilotage opérationnel et stratégique.</p>
         <div class="proj-details">
           <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Extraction de données ERP :</strong> Analyse des schémas de données du progiciel de gestion (ERP) de l'entreprise et mise en place de flux d'extraction automatisés.</span>
+            <span class="detail-bullet">✦</span>
+            <span><strong>Extraction de flux ERP :</strong> Analyse des structures relationnelles de l'ERP de production et extraction ciblée des données d'activité.</span>
           </div>
           <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Modélisation &amp; Mesures DAX :</strong> Nettoyage (Power Query), structuration en modèle décisionnel et création d'indicateurs de performance (KPI) via DAX.</span>
+            <span class="detail-bullet">✦</span>
+            <span><strong>Modélisation &amp; Mesures DAX :</strong> Nettoyage (Power Query), structuration en schéma décisionnel et calcul d'indicateurs de performance clés (KPI).</span>
           </div>
           <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Data Visualisation &amp; Décisionnel :</strong> Conception de tableaux de bord Power BI dynamiques et ergonomiques pour la direction et les équipes opérationnelles.</span>
+            <span class="detail-bullet">✦</span>
+            <span><strong>Data Visualisation &amp; Décisionnel :</strong> Conception de rapports Power BI dynamiques, interactifs et ergonomiques pour la direction et les ateliers.</span>
           </div>
         </div>
         <div class="proj-stack">
-          <span>Power BI</span><span>ERP</span><span>SQL</span><span>Power Query</span><span>DAX</span><span>Modélisation relationnelle</span>
+          <span>Power BI</span><span>ERP</span><span>SQL</span><span>Power Query</span><span>DAX</span><span>Modélisation décisionnelle</span>
         </div>
       </div>
-    </div>
+    </article>
 
-  </section>
-
-  <!-- ═══ PROJETS ACADÉMIQUES ═══ -->
-  <section id="academiques">
-    <div class="section-tag">// Projets académiques</div>
-
-    <!-- Resto'N -->
-    <div class="proj-card reveal">
+    <!-- 02 - Resto'N -->
+    <article class="proj-card reveal" data-category="fullstack data-bi">
       <div class="proj-card-img">
-        <img src="img_reston.png" alt="Screenshot Resto'N" />
-        <div class="proj-card-num">02</div>
+        <img src="img_reston.png" alt="Screenshot de la plateforme Resto'N" />
+        <span class="proj-card-num">02</span>
       </div>
       <div class="proj-card-body">
         <div class="proj-tags">
           <span class="ptag">Full-Stack</span>
-          <span class="ptag">SAE</span>
-          <span class="ptag">Data</span>
+          <span class="ptag">SAE Universitaire</span>
+          <span class="ptag">Base de données</span>
         </div>
-        <h3>Resto'N — Application de gestion d'établissement</h3>
-        <p>Solution complète de gestion de restaurant développée dans le cadre d'une SAE. Couvre la gestion des réservations, des commandes et des stocks en temps réel.</p>
+        <h3>Resto'N — Application SaaS de gestion de restauration</h3>
+        <p>Solution complète de gestion d'établissements de restauration développée dans le cadre d'une SAE. Couvre l'intégralité des flux : réservations, prise de commandes et gestion des stocks en temps réel.</p>
         <div class="proj-details">
           <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Architecture de données :</strong> Modélisation d'une base relationnelle pour la cohérence stocks / commandes en temps réel.</span>
+            <span class="detail-bullet">✦</span>
+            <span><strong>Architecture de données :</strong> Modélisation et implémentation d'une base relationnelle garantissant la cohérence stocks / commandes.</span>
           </div>
           <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Data &amp; Analytics :</strong> Module de reporting et d'analyse pour l'aide à la décision.</span>
+            <span class="detail-bullet">✦</span>
+            <span><strong>Module Analytics :</strong> Reporting et tableaux de bord d'analyse des ventes pour l'aide à la décision.</span>
           </div>
           <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Conception Full-Stack :</strong> Interface complète (réservations, commandes, stocks) avec Symfony.</span>
+            <span class="detail-bullet">✦</span>
+            <span><strong>Développement Full-Stack :</strong> Conception applicative robuste avec Symfony, gestion des rôles et interface responsive.</span>
           </div>
         </div>
         <div class="proj-stack">
-          <span>PHP</span><span>Symfony</span><span>SQL</span>
-          <span>Oracle</span><span>MySQL</span><span>HTML/CSS</span><span>JavaScript</span>
+          <span>PHP</span><span>Symfony</span><span>SQL</span><span>Oracle</span><span>MySQL</span><span>JavaScript</span><span>CSS3</span>
         </div>
-        <a href="http://reston.ovh" target="_blank" class="proj-link">🌐 reston.ovh ↗</a>
+        <a href="http://reston.ovh" target="_blank" class="proj-link">🌐 Visiter reston.ovh ↗</a>
       </div>
-    </div>
+    </article>
 
-  </section>
-
-  <!-- ═══ PROJETS PERSONNELS ═══ -->
-  <section id="personnels">
-    <div class="section-tag">// Projets personnels</div>
-
-    <!-- Bloodshadow -->
-    <div class="proj-card reveal">
+    <!-- 03 - Bloodshadow -->
+    <article class="proj-card reveal" data-category="fullstack">
       <div class="proj-card-img">
-        <img src="img_bloodshadow.png" alt="Screenshot Bloodshadow" />
-        <div class="proj-card-num">03</div>
+        <img src="img_bloodshadow.png" alt="Aperçu du site Bloodshadow" />
+        <span class="proj-card-num">03</span>
       </div>
       <div class="proj-card-body">
         <div class="proj-tags">
-          <span class="ptag">Perso</span>
+          <span class="ptag">Projet Perso</span>
+          <span class="ptag">Front-End</span>
           <span class="ptag">Gaming</span>
-          <span class="ptag">Web</span>
         </div>
-        <h3>Bloodshadow — Site de guilde gaming</h3>
-        <p>Site web complet pour une guilde Lost Ark. Regroupe l'ensemble des besoins d'une communauté de joueurs avec un back-office d'administration complet.</p>
+        <h3>Bloodshadow — Plateforme communautaire de guilde</h3>
+        <p>Site web complet et autonome conçu pour une guilde Lost Ark. Regroupe tous les outils nécessaires à une communauté de joueurs actifs avec back-office complet.</p>
         <div class="proj-details">
           <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Gestion des membres :</strong> Connexion, profils joueurs, rôles et permissions.</span>
+            <span class="detail-bullet">✦</span>
+            <span><strong>Gestion des membres :</strong> Authentification, fiches joueurs, rôles et permissions personnalisées.</span>
           </div>
           <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Planning de raids :</strong> Tableau interactif, inscription des participants, compositions.</span>
+            <span class="detail-bullet">✦</span>
+            <span><strong>Planning de raids :</strong> Calendrier interactif avec inscriptions en direct et composition d'équipes.</span>
           </div>
           <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Cagnotte &amp; Annonces :</strong> Cagnotte communautaire et panneau d'annonces Markdown.</span>
-          </div>
-          <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Production :</strong> +228 déploiements sur Netlify.</span>
+            <span class="detail-bullet">✦</span>
+            <span><strong>Intégration &amp; Déploiement :</strong> +228 déploiements continus sur Netlify.</span>
           </div>
         </div>
         <div class="proj-stack">
-          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Netlify CI/CD</span>
         </div>
-        <a href="https://github.com/Kisytloa/Bloodshadowwebsite" target="_blank" class="proj-link">⌥ GitHub ↗</a>
+        <a href="https://github.com/Kisytloa/Bloodshadowwebsite" target="_blank" class="proj-link">⌥ Voir sur GitHub ↗</a>
       </div>
-    </div>
+    </article>
 
-    <!-- Bots -->
-    <div class="proj-card reveal">
+    <!-- 04 - Bots d'automatisation -->
+    <article class="proj-card reveal" data-category="scripts">
       <div class="proj-card-img">
-        <img src="img_bots.png" alt="Screenshot Bots d'automatisation" />
-        <div class="proj-card-num">04</div>
+        <img src="img_bots.png" alt="Aperçu des bots d'automatisation" />
+        <span class="proj-card-num">04</span>
       </div>
       <div class="proj-card-body">
         <div class="proj-tags">
           <span class="ptag">Automatisation</span>
-          <span class="ptag">API</span>
+          <span class="ptag">Python</span>
+          <span class="ptag">API REST</span>
         </div>
-        <h3>Bots d'automatisation</h3>
-        <p>Scripts d'automatisation pour des tâches administratives et scolaires répétitives. Intégration d'APIs tierces avec gestion des permissions et sécurité des interactions.</p>
+        <h3>Bots &amp; Scripts d'automatisation des flux</h3>
+        <p>Ensemble de scripts et bots développés pour automatiser les tâches répétitives scolaires et administratives. Intégration d'APIs tierces et exécution programmée.</p>
         <div class="proj-details">
           <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Scripts Python :</strong> Automatisation de tâches scolaires et administratives via GitHub Actions.</span>
+            <span class="detail-bullet">✦</span>
+            <span><strong>Scripts Python &amp; CI/CD :</strong> Automatisation de workflows réguliers orchestrés via GitHub Actions.</span>
           </div>
           <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Intégration API :</strong> Connexion à des APIs tierces pour la récupération de données dynamiques.</span>
+            <span class="detail-bullet">✦</span>
+            <span><strong>Connexion API :</strong> Récupération, parsing et normalisation de flux de données externes JSON.</span>
           </div>
           <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Node.js :</strong> Gestion des permissions et sécurité des interactions utilisateurs.</span>
+            <span class="detail-bullet">✦</span>
+            <span><strong>Sécurité :</strong> Gestion des tokens d'accès, permissions et intégrité des données.</span>
           </div>
         </div>
         <div class="proj-stack">
           <span>Python</span><span>Node.js</span><span>API REST</span><span>GitHub Actions</span>
         </div>
       </div>
-    </div>
+    </article>
 
-    <!-- Épargne -->
-    <div class="proj-card reveal">
+    <!-- 05 - Calculateur d'épargne -->
+    <article class="proj-card reveal" data-category="data-bi fullstack">
       <div class="proj-card-img">
         <img src="img_epargne.png" alt="Screenshot Calculateur d'épargne" />
-        <div class="proj-card-num">05</div>
+        <span class="proj-card-num">05</span>
       </div>
       <div class="proj-card-body">
         <div class="proj-tags">
-          <span class="ptag">Finance</span>
-          <span class="ptag">Data</span>
+          <span class="ptag">Finance &amp; Data</span>
+          <span class="ptag">Algorithmique</span>
           <span class="ptag">Web</span>
         </div>
-        <h3>Calculateur d'épargne — Intérêts simples</h3>
-        <p>Application web de simulation financière permettant de calculer les intérêts simples sur un capital. Gestion des versements, retraits et changements de taux avec historique complet des opérations.</p>
+        <h3>Calculateur d'épargne — Simulateur d'intérêts simples</h3>
+        <p>Outil web de simulation financière permettant de calculer avec précision les intérêts bancaires par quinzaines, avec gestion dynamique des versements et retraits.</p>
         <div class="proj-details">
           <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Tableau d'amortissement :</strong> Calcul automatique période par période (quinzaines) avec taux, solde et intérêts générés.</span>
+            <span class="detail-bullet">✦</span>
+            <span><strong>Tableau d'amortissement :</strong> Calcul automatique et instantané période par période selon les règles bancaires officielles.</span>
           </div>
           <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Opérations dynamiques :</strong> Enregistrement de versements, retraits et modifications de taux avec mise à jour en temps réel.</span>
-          </div>
-          <div class="proj-detail-item">
-            <span class="detail-bullet">⚔</span>
-            <span><strong>Récapitulatif financier :</strong> Affichage des intérêts nets et du solde final au 31/12 en temps réel.</span>
+            <span class="detail-bullet">✦</span>
+            <span><strong>Mise à jour en temps réel :</strong> Réévaluation dynamique des soldes et intérêts lors de tout versement ou modification de taux.</span>
           </div>
         </div>
         <div class="proj-stack">
-          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Algorithmique</span>
         </div>
-        <a href="https://github.com/Kisytloa/epargne" target="_blank" class="proj-link">⌥ GitHub ↗</a>
+        <a href="https://github.com/Kisytloa/epargne" target="_blank" class="proj-link">⌥ Voir sur GitHub ↗</a>
       </div>
-    </div>
+    </article>
 
-  </section>
+  </main>
 
-  <!-- CTA bas de page -->
+  <!-- CTA BAS DE PAGE -->
   <section class="projects-cta">
-    <p class="cta-text reveal">À la recherche d'un alternant en Data ? Je suis disponible.</p>
-    <a href="contact.html" class="btn-fill reveal">Me contacter</a>
+    <div class="section-tag">// Recrutement</div>
+    <h2 class="cta-text reveal">À la recherche d'un alternant en Data ?</h2>
+    <p class="reveal" style="color: var(--muted); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+      Disponible pour débuter un contrat d'alternance pour l'année universitaire 2026–2027 (rythme école / entreprise).
+    </p>
+    <div class="reveal" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="contact.html" class="btn-fill">Me contacter pour échanger →</a>
+      <a href="CV_Yanis_Dutilleul.pdf" target="_blank" class="btn-outline">Télécharger mon CV ↗</a>
+    </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <span>Yanis <strong>Dutilleul</strong> · 2026</span>
+    <span>© 2026 Yanis <strong>Dutilleul</strong> · Portfolio Data &amp; Informatique</span>
     <nav class="footer-nav">
       <a href="index.html">Accueil</a>
       <a href="projets.html">Projets</a>
       <a href="contact.html">Contact</a>
       <a href="mentions-legales.html">Mentions Légales</a>
     </nav>
-    <span class="footer-motto">COURAGE · PERSÉVÉRANCE · CONFIANCE</span>
   </footer>
 
   <script src="script.js"></script>

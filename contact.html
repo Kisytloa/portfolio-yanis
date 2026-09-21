@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yanis Dutilleul — Contact</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Oswald:wght@300;400;600&family=Alice&display=swap" rel="stylesheet" />
+  <title>Yanis Dutilleul — Contact &amp; Alternance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/x-icon" href="Logo Yanis-Photoroom.png">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- TOP SCROLL PROGRESS BAR -->
+  <div id="scroll-progress"></div>
 
   <!-- MOBILE NAV -->
   <div class="mobile-nav" id="mobileNav">
@@ -18,115 +23,143 @@
     <a href="contact.html" class="active">Contact</a>
   </div>
 
-  <!-- NAV -->
+  <!-- FLOATING GLASS NAVBAR -->
   <nav id="navbar">
-    <a href="index.html" class="nav-logo">YD</a>
+    <a href="index.html" class="nav-logo">
+      YD<span class="nav-logo-dot"></span>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="projets.html">Projets</a></li>
       <li><a href="contact.html" class="active">Contact</a></li>
     </ul>
-    <a href="mailto:yanisdutilleul21112006@gmail.com" class="nav-cta">Me recruter</a>
+    <a href="mailto:yanisdutilleul21112006@gmail.com" class="nav-cta">
+      <span>Me recruter</span>
+      <span style="font-size: 0.9rem;">→</span>
+    </a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
   <!-- ═══ PAGE HEADER ═══ -->
-  <div class="page-header">
-    <p class="hero-kicker">Recrutement · Alternance</p>
-    <h1 class="page-title">
-      <span class="line-wrap"><span class="reveal-word">Travaillons</span></span>
-      <span class="line-wrap"><span class="reveal-word delay-1">ensemble.</span></span>
+  <header class="page-header">
+    <div class="hero-badge reveal" style="margin-bottom: 1.25rem;">
+      <span class="pulse-dot"></span>
+      <span>Recrutement · Alternance 2026–2027</span>
+    </div>
+    <h1 class="page-title reveal">
+      Travaillons <span class="hero-gradient-text">ensemble.</span>
     </h1>
-    <p class="page-desc">À la recherche d'une alternance en Data pour ma 3ème année de BUT Informatique. Réponse sous 24h.</p>
-  </div>
+    <p class="page-desc reveal">
+      À la recherche d'une alternance en Data / Business Intelligence pour ma 3ème année de BUT Informatique. Réponse sous 24h.
+    </p>
+  </header>
 
-  <!-- ═══ CONTACT ═══ -->
-  <section id="contact-main">
+  <!-- ═══ CONTACT MAIN ═══ -->
+  <main id="contact-main" style="max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem 4rem;">
     <div class="contact-grid">
 
-      <!-- Infos directes -->
       <div class="contact-infos reveal">
-        <div class="section-tag">// Coordonnées</div>
-        <h2>Me<br><em>joindre.</em></h2>
+        <div class="section-tag">// Coordonnées directes</div>
+        <h2 class="section-title">Comment me <em>joindre.</em></h2>
 
         <div class="contact-cards">
-          <a href="mailto:yanisdutilleul21112006@gmail.com" class="contact-card">
-            <span class="cc-icon">✉</span>
-            <div>
-              <div class="cc-label">Email</div>
-              <div class="cc-val">yanisdutilleul21112006@gmail.com</div>
+          <!-- Email Card -->
+          <div class="contact-card">
+            <div class="cc-icon">✉</div>
+            <div style="flex-grow: 1;">
+              <div class="cc-label">Email direct</div>
+              <a href="mailto:yanisdutilleul21112006@gmail.com" class="cc-val" style="color: var(--primary-light); font-size: 0.88rem; word-break: break-all;">
+                yanisdutilleul21112006@gmail.com
+              </a>
+              <div>
+                <button class="copy-btn" data-copy="yanisdutilleul21112006@gmail.com">
+                  📋 Copier l'e-mail
+                </button>
+              </div>
             </div>
-          </a>
-          <div class="contact-card no-link">
-            <span class="cc-icon">📍</span>
+          </div>
+
+          <!-- Localisation -->
+          <div class="contact-card">
+            <div class="cc-icon">📍</div>
             <div>
               <div class="cc-label">Localisation</div>
               <div class="cc-val">Reims, France</div>
+              <div style="font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem;">Région Grand Est / Mobile</div>
             </div>
           </div>
-          <a href="http://reston.ovh" target="_blank" class="contact-card">
-            <span class="cc-icon">🌐</span>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/yanis-dutilleul-544088357/" target="_blank" class="contact-card">
+            <div class="cc-icon" style="color: #38bdf8; background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.25);">in</div>
             <div>
-              <div class="cc-label">Projet en ligne</div>
-              <div class="cc-val">reston.ovh ↗</div>
+              <div class="cc-label">Réseau professionnel</div>
+              <div class="cc-val">LinkedIn ↗</div>
+              <div style="font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem;">Yanis Dutilleul</div>
             </div>
           </a>
+
+          <!-- GitHub -->
           <a href="https://github.com/Kisytloa" target="_blank" class="contact-card">
-            <span class="cc-icon">⌥</span>
+            <div class="cc-icon">⌥</div>
             <div>
-              <div class="cc-label">GitHub</div>
-              <div class="cc-val">Mon profil GitHub</div>
-            </div>
-          </a>
-          <a href="https://www.linkedin.com/in/yanis-dutilleul-544088357/" target="_blank" class="contact-card contact-card--linkedin">
-            <span class="cc-icon">in</span>
-            <div>
-              <div class="cc-label">LinkedIn</div>
-              <div class="cc-val">Yanis Dutilleul ↗</div>
+              <div class="cc-label">Code source &amp; Dépôts</div>
+              <div class="cc-val">GitHub ↗</div>
+              <div style="font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem;">github.com/Kisytloa</div>
             </div>
           </a>
         </div>
 
+        <!-- Disponibilité Badge -->
         <div class="contact-dispo">
-          <div class="dispo-dot"></div>
-          <span>En recherche active d'une <strong>alternance en Data</strong> (Rythme BUT 3)</span>
+          <span class="pulse-dot"></span>
+          <span>
+            Disponible immédiatement pour un contrat d'<strong>alternance en Data</strong> (Rythme BUT 3 Informatique).
+          </span>
         </div>
       </div>
-  </section>
 
-  <!-- ═══ CV ═══ -->
+    </div>
+  </main>
+
+  <!-- ═══ CV SECTION ═══ -->
   <section id="cv-section">
     <div class="cv-inner reveal">
       <div class="cv-text">
         <div class="section-tag">// Curriculum Vitae</div>
-        <h2>Mon<br><em>CV.</em></h2>
-        <p>Retrouvez l'ensemble de mon parcours, mes compétences techniques et mes projets dans mon CV. Disponible en téléchargement direct.</p>
+        <h2 class="section-title">Consulter <em>mon CV.</em></h2>
+        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+          Retrouvez le récapitulatif complet de mon parcours universitaire en DATA, mon stage chez Econox Production, mes compétences logicielles et l'ensemble de mes projets.
+        </p>
+
         <div class="cv-meta">
           <div class="cv-meta-item">
             <span class="cv-meta-label">Format</span>
-            <span class="cv-meta-val">PDF</span>
+            <span class="cv-meta-val">PDF Haute Définition</span>
           </div>
           <div class="cv-meta-item">
-            <span class="cv-meta-label">Mis à jour</span>
-            <span class="cv-meta-val">2026</span>
+            <span class="cv-meta-label">Mise à jour</span>
+            <span class="cv-meta-val">Septembre 2026</span>
           </div>
           <div class="cv-meta-item">
-            <span class="cv-meta-label">Langue</span>
-            <span class="cv-meta-val">Français</span>
+            <span class="cv-meta-label">Profil</span>
+            <span class="cv-meta-val">Alternance Data</span>
           </div>
         </div>
-        <div class="cv-actions">
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
           <a href="CV_Yanis_Dutilleul.pdf" download class="btn-fill">⬇ Télécharger le CV</a>
-          <a href="CV_Yanis_Dutilleul.pdf" target="_blank" class="btn-outline">↗ Voir en plein écran</a>
+          <a href="CV_Yanis_Dutilleul.pdf" target="_blank" class="btn-outline">↗ Plein écran</a>
         </div>
       </div>
+
       <div class="cv-preview">
         <div class="cv-frame">
           <iframe src="CV_Yanis_Dutilleul.pdf" title="CV Yanis Dutilleul"></iframe>
           <div class="cv-frame-overlay">
-            <a href="CV_Yanis_Dutilleul.pdf" target="_blank" class="cv-open-btn">↗ Ouvrir</a>
+            <a href="CV_Yanis_Dutilleul.pdf" target="_blank" class="cv-open-btn">↗ Ouvrir le document</a>
           </div>
         </div>
       </div>
@@ -135,7 +168,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <span>Yanis <strong>Dutilleul</strong> · 2026</span>
+    <span>© 2026 Yanis <strong>Dutilleul</strong> · Portfolio Data &amp; Informatique</span>
     <nav class="footer-nav">
       <a href="index.html">Accueil</a>
       <a href="projets.html">Projets</a>
