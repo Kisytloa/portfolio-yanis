@@ -224,4 +224,98 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 11. Interactive CV Version Toggle (contact.html)
+  const cvToggleBtns = document.querySelectorAll('.cv-toggle-btn');
+  const cvIframe = document.getElementById('cvIframe');
+  const cvDownloadBtn = document.getElementById('cvDownloadBtn');
+  const cvFullscreenBtn = document.getElementById('cvFullscreenBtn');
+  const cvOverlayBtn = document.getElementById('cvOverlayBtn');
+  const cvMetaProfil = document.getElementById('cvMetaProfil');
+  const cvMetaExtra = document.getElementById('cvMetaExtra');
+  const cvMetaExtraItem = document.getElementById('cvMetaExtraItem');
+
+  if (cvToggleBtns.length > 0 && cvIframe) {
+    const cvVersions = {
+      stage: {
+        file: 'CV_Yanis_Dutilleul_Stage.pdf',
+        downloadName: 'CV_Yanis_Dutilleul_Stage.pdf',
+        downloadLabel: '⬇ Télécharger le CV (Stage)',
+        profil: 'Stage Data (Janv. 2027)',
+        extraLabel: 'Durée',
+        extraValue: '14 à 16 semaines',
+        iframeTitle: 'CV Yanis Dutilleul - Version Stage'
+      },
+      alternance: {
+        file: 'CV_Yanis_Dutilleul_Alternance.pdf',
+        downloadName: 'CV_Yanis_Dutilleul_Alternance.pdf',
+        downloadLabel: '⬇ Télécharger le CV (Alternance)',
+        profil: 'Alternance Data',
+        extraLabel: 'Rythme d\'études',
+        extraValue: 'BUT 3 Informatique',
+        iframeTitle: 'CV Yanis Dutilleul - Version Alternance'
+      }
+    };
+
+    const setCvVersion = (type) => {
+      const data = cvVersions[type];
+      if (!data) return;
+
+      cvToggleBtns.forEach(b => {
+        const isActive = b.getAttribute('data-cv') === type;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      // Smooth iframe transition
+      cvIframe.style.opacity = '0.2';
+      setTimeout(() => {
+        cvIframe.src = data.file;
+        cvIframe.title = data.iframeTitle;
+        cvIframe.style.opacity = '1';
+      }, 150);
+
+      // Update buttons
+      if (cvDownloadBtn) {
+        cvDownloadBtn.href = data.file;
+        cvDownloadBtn.setAttribute('download', data.downloadName);
+        cvDownloadBtn.textContent = data.downloadLabel;
+      }
+
+      if (cvFullscreenBtn) {
+        cvFullscreenBtn.href = data.file;
+      }
+
+      if (cvOverlayBtn) {
+        cvOverlayBtn.href = data.file;
+      }
+
+      // Update metadata text
+      if (cvMetaProfil) {
+        cvMetaProfil.textContent = data.profil;
+      }
+
+      if (cvMetaExtra) {
+        cvMetaExtra.textContent = data.extraValue;
+      }
+
+      if (cvMetaExtraItem) {
+        const label = cvMetaExtraItem.querySelector('.cv-meta-label');
+        if (label) label.textContent = data.extraLabel;
+      }
+    };
+
+    cvToggleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const type = btn.getAttribute('data-cv');
+        setCvVersion(type);
+      });
+    });
+
+    // Check URL hash for direct links (e.g., #cv-alternance or #alternance)
+    const hash = window.location.hash.toLowerCase();
+    if (hash.includes('alternance')) {
+      setCvVersion('alternance');
+    }
+  }
 });

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yanis Dutilleul — Contact &amp; Alternance</title>
+  <meta name="description" content="Contactez Yanis Dutilleul, étudiant en 3ème année de BUT Informatique (DATA) à Reims. Disponible pour un stage dès début janvier 2027 ou en alternance." />
+  <title>Yanis Dutilleul — Contact · Stage &amp; Alternance</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -46,13 +47,13 @@
   <header class="page-header">
     <div class="hero-badge reveal" style="margin-bottom: 1.25rem;">
       <span class="pulse-dot"></span>
-      <span>Recrutement · Alternance 2026–2027</span>
+      <span>Recherche de Stage (janv. 2027) ou Alternance</span>
     </div>
     <h1 class="page-title reveal">
       Travaillons <span class="hero-gradient-text">ensemble.</span>
     </h1>
     <p class="page-desc reveal">
-      À la recherche d'une alternance en Data / Business Intelligence pour ma 3ème année de BUT Informatique. Réponse sous 24h.
+      À la recherche d'un <strong>stage de fin d'études dès début janvier 2027</strong> ou d'une <strong>alternance</strong> en Data / Business Intelligence (BUT 3 Informatique). Réponse sous 24h.
     </p>
   </header>
 
@@ -116,7 +117,7 @@
         <div class="contact-dispo">
           <span class="pulse-dot"></span>
           <span>
-            Disponible immédiatement pour un contrat d'<strong>alternance en Data</strong> (Rythme BUT 3 Informatique).
+            Disponible dès <strong>début janvier 2027</strong> pour un <strong>stage</strong> (ou dès à présent en <strong>alternance</strong>) en Data, BI &amp; Informatique.
           </span>
         </div>
       </div>
@@ -134,6 +135,21 @@
           Retrouvez le récapitulatif complet de mon parcours universitaire en DATA, mon stage chez Econox Production, mes compétences logicielles et l'ensemble de mes projets.
         </p>
 
+        <!-- SÉLECTEUR DE VERSION DU CV -->
+        <div class="cv-toggle-wrapper">
+          <span class="cv-toggle-label">Choisissez la version du CV :</span>
+          <div class="cv-toggle-group" role="tablist">
+            <button type="button" class="cv-toggle-btn active" id="btnCvStage" data-cv="stage" role="tab" aria-selected="true">
+              <span class="toggle-dot"></span>
+              <span>🎯 Version Stage (Janv. 2027)</span>
+            </button>
+            <button type="button" class="cv-toggle-btn" id="btnCvAlternance" data-cv="alternance" role="tab" aria-selected="false">
+              <span class="toggle-dot"></span>
+              <span>💼 Version Alternance</span>
+            </button>
+          </div>
+        </div>
+
         <div class="cv-meta">
           <div class="cv-meta-item">
             <span class="cv-meta-label">Format</span>
@@ -141,25 +157,29 @@
           </div>
           <div class="cv-meta-item">
             <span class="cv-meta-label">Mise à jour</span>
-            <span class="cv-meta-val">Septembre 2026</span>
+            <span class="cv-meta-val">Octobre 2026</span>
           </div>
           <div class="cv-meta-item">
-            <span class="cv-meta-label">Profil</span>
-            <span class="cv-meta-val">Alternance Data</span>
+            <span class="cv-meta-label">Profil visé</span>
+            <span class="cv-meta-val" id="cvMetaProfil">Stage Data (Janv. 2027)</span>
+          </div>
+          <div class="cv-meta-item" id="cvMetaExtraItem">
+            <span class="cv-meta-label">Durée</span>
+            <span class="cv-meta-val" id="cvMetaExtra">14 à 16 semaines</span>
           </div>
         </div>
 
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <a href="CV_Yanis_Dutilleul.pdf" download class="btn-fill">⬇ Télécharger le CV</a>
-          <a href="CV_Yanis_Dutilleul.pdf" target="_blank" class="btn-outline">↗ Plein écran</a>
+          <a href="CV_Yanis_Dutilleul_Stage.pdf" download="CV_Yanis_Dutilleul_Stage.pdf" id="cvDownloadBtn" class="btn-fill">⬇ Télécharger le CV (Stage)</a>
+          <a href="CV_Yanis_Dutilleul_Stage.pdf" target="_blank" id="cvFullscreenBtn" class="btn-outline">↗ Plein écran</a>
         </div>
       </div>
 
       <div class="cv-preview">
         <div class="cv-frame">
-          <iframe src="CV_Yanis_Dutilleul.pdf" title="CV Yanis Dutilleul"></iframe>
+          <iframe id="cvIframe" src="CV_Yanis_Dutilleul_Stage.pdf" title="CV Yanis Dutilleul - Stage"></iframe>
           <div class="cv-frame-overlay">
-            <a href="CV_Yanis_Dutilleul.pdf" target="_blank" class="cv-open-btn">↗ Ouvrir le document</a>
+            <a href="CV_Yanis_Dutilleul_Stage.pdf" target="_blank" id="cvOverlayBtn" class="cv-open-btn">↗ Ouvrir le document</a>
           </div>
         </div>
       </div>
