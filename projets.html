@@ -1,285 +1,288 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js" data-page="projets">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Découvrez les projets de Yanis Dutilleul en Business Intelligence, Power BI, ERP, SQL et développement informatique. Disponible pour un stage dès début janvier 2027 ou alternance." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Yanis Dutilleul Projets &amp; Réalisations</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/x-icon" href="Logo Yanis-Photoroom.png">
+  <meta name="description" content="Les projets de Yanis Dutilleul : Business Intelligence et Power BI, analyse de données, applications web Symfony et JavaScript. Disponible pour un stage dès janvier 2027 ou en alternance." />
+  <meta name="author" content="Yanis Dutilleul" />
+  <meta name="theme-color" content="#060a15" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Yanis Dutilleul Projets &amp; Réalisations" />
+  <meta property="og:description" content="Les projets de Yanis Dutilleul : Business Intelligence et Power BI, analyse de données, applications web Symfony et JavaScript. Disponible pour un stage dès janvier 2027 ou en alternance." />
+  <meta property="og:image" content="logo-192.png" />
+  <link rel="icon" type="image/png" href="logo-64.png" />
+  <link rel="apple-touch-icon" href="logo-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&amp;family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500;1,600&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script>
+    /* Avant le premier rendu : faction mémorisée + intro (1 fois par session, accueil uniquement) */
+    (function (h) {
+      h.className = h.className.replace('no-js', 'js');
+      try {
+        if (localStorage.getItem('faction') === 'ombre') h.dataset.faction = 'ombre';
+        if (h.dataset.page === 'home' && !sessionStorage.getItem('eveil') &&
+            !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('intro-on');
+      } catch (e) {}
+    })(document.documentElement);
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <canvas id="aether" aria-hidden="true"></canvas>
 
-  <!-- TOP SCROLL PROGRESS BAR -->
-  <div id="scroll-progress"></div>
-
-  <!-- MOBILE NAV -->
-  <div class="mobile-nav" id="mobileNav">
-    <button class="mobile-close" id="mobileClose">✕</button>
-    <a href="index.html">Accueil</a>
-    <a href="projets.html" class="active">Projets</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
-  <!-- FLOATING GLASS NAVBAR -->
-  <nav id="navbar">
-    <a href="index.html" class="nav-logo">
-      YD<span class="nav-logo-dot"></span>
+  <!-- ═══ NAVIGATION ═══ -->
+  <header id="navbar">
+    <a href="index.html" class="nav-logo" aria-label="Yanis Dutilleul — accueil">
+      <img src="logo-64.png" alt="" width="38" height="38" />
+      <span>Yanis Dutilleul<small>Data &amp; Développement</small></span>
     </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="projets.html" class="active">Projets</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <a href="contact.html" class="nav-cta">
-      <span>Me recruter</span>
-      <span style="font-size: 0.9rem;">→</span>
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- ═══ PAGE HEADER ═══ -->
-  <header class="page-header">
-    <div class="section-tag">// Portfolio</div>
-    <h1 class="page-title reveal">
-      Mes <span class="hero-gradient-text">Réalisations.</span>
-    </h1>
-    <p class="page-desc reveal">
-      Projets d'entreprise, académiques et personnels — de la valorisation de flux de données au code en production.
-    </p>
-
-    <!-- DYNAMIC FILTER BUTTONS -->
-    <div class="filter-bar reveal">
-      <button class="filter-btn active" data-filter="all">Tous les projets</button>
-      <button class="filter-btn" data-filter="data-bi">📊 Data &amp; Business Intelligence</button>
-      <button class="filter-btn" data-filter="fullstack">💻 Web &amp; Full-Stack</button>
-      <button class="filter-btn" data-filter="scripts">⚡ Automatisation &amp; Scripts</button>
+    <nav aria-label="Navigation principale">
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="projets.html" class="active" aria-current="page">Projets</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <button class="faction-toggle" type="button" aria-label="Changer de faction : Lumière ou Ombre" aria-pressed="false" data-hover>
+        <span class="ft-knob" aria-hidden="true"></span>
+        <svg class="ft-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM4.2 5.6l1.4-1.4 2.1 2.1-1.4 1.4zm12.1 12.1 1.4-1.4 2.1 2.1-1.4 1.4zM4.2 18.4l2.1-2.1 1.4 1.4-2.1 2.1zM16.3 6.3l2.1-2.1 1.4 1.4-2.1 2.1z"/></svg>
+        <svg class="ft-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A9 9 0 0 1 9.5 3a9 9 0 1 0 11.5 11.5z"/></svg>
+      </button>
+      <a class="btn btn-gold btn-sm nav-cta" href="contact.html">Me recruter</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <!-- ═══ PROJECTS LIST ═══ -->
-  <main class="projects-container" style="max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem;">
+  <nav class="mobile-nav" id="mobileNav" aria-label="Navigation mobile">
+    <a href="index.html">Accueil</a>
+    <a href="projets.html" class="active" aria-current="page">Projets</a>
+    <a href="contact.html">Contact</a>
+    <div class="mn-rune" aria-hidden="true"></div>
+    <a href="mentions-legales.html" style="font-size:1rem">Mentions légales</a>
+  </nav>
 
-    <!-- 01 - Econox Production (Experience Pro) -->
-    <article class="proj-card reveal" data-category="data-bi">
-      <div class="proj-card-badge-panel">
-        <div class="proj-badge-top">
-          <span class="proj-badge-num">01</span>
-          <span class="proj-badge-pill">Stage · 12 semaines</span>
-        </div>
-        <div class="proj-badge-org">Econox Production</div>
-        <div class="proj-badge-details">
-          <div class="proj-badge-row">
-            <span class="proj-badge-k">Mission</span>
-            <span class="proj-badge-v">Business Intelligence &amp; Data</span>
-          </div>
-          <div class="proj-badge-row">
-            <span class="proj-badge-k">Cadre</span>
-            <span class="proj-badge-v">Stage BUT 2 Informatique</span>
-          </div>
-          <div class="proj-badge-row">
-            <span class="proj-badge-k">Durée</span>
-            <span class="proj-badge-v gold">12 semaines</span>
-          </div>
-          <div class="proj-badge-row">
-            <span class="proj-badge-k">Outil phare</span>
-            <span class="proj-badge-v">Power BI &amp; ERP</span>
-          </div>
-        </div>
-      </div>
-      <div class="proj-card-body">
-        <div class="proj-tags">
-          <span class="ptag">Business Intelligence</span>
-          <span class="ptag">ERP</span>
-          <span class="ptag">Power BI</span>
-          <span class="ptag">Expérience Entreprise</span>
-        </div>
-        <h3>Econox Production — Tableaux de bord Power BI &amp; Extraction ERP</h3>
-        <p>Projet décisionnel complet mené durant 12 semaines chez Econox Production. Prise en charge de toute la chaîne de valeur : extraction automatisée des données de l'ERP métier, modélisation relationnelle et conception de tableaux de bord interactifs Power BI pour le pilotage opérationnel et stratégique.</p>
-        <div class="proj-details">
-          <div class="proj-detail-item">
-            <span class="detail-bullet">✦</span>
-            <span><strong>Extraction de flux ERP :</strong> Analyse des structures relationnelles de l'ERP de production et extraction ciblée des données d'activité.</span>
-          </div>
-          <div class="proj-detail-item">
-            <span class="detail-bullet">✦</span>
-            <span><strong>Modélisation &amp; Mesures DAX :</strong> Nettoyage (Power Query), structuration en schéma décisionnel et calcul d'indicateurs de performance clés (KPI).</span>
-          </div>
-          <div class="proj-detail-item">
-            <span class="detail-bullet">✦</span>
-            <span><strong>Data Visualisation &amp; Décisionnel :</strong> Conception de rapports Power BI dynamiques, interactifs et ergonomiques pour la direction et les ateliers.</span>
-          </div>
-        </div>
-        <div class="proj-stack">
-          <span>Power BI</span><span>ERP</span><span>SQL</span><span>Power Query</span><span>DAX</span><span>Modélisation décisionnelle</span>
-        </div>
-      </div>
-    </article>
+  <!-- ═══ EN-TÊTE ═══ -->
+  <header class="page-hero">
+    <div class="sky" data-sky aria-hidden="true"></div>
+    <div class="hero-stage" data-depth=".1" aria-hidden="true">
+      <div class="rune-circle" data-rune-circle></div>
+    </div>
+    <div>
+      <p class="hero-over hero-fade" style="--t:.1s">✦ Le codex des quêtes ✦</p>
+      <h1 class="page-title" aria-label="Mes réalisations"><span data-split data-split-reset>Mes</span> <span class="accent" data-split>Réalisations</span></h1>
+      <p class="page-desc hero-fade" style="--t:.7s">Expérience en entreprise, projets universitaires et créations personnelles : de la donnée brute au code en production.</p>
+    </div>
+  </header>
 
-    <!-- 02 - Resto'N -->
-    <article class="proj-card reveal" data-category="fullstack data-bi">
-      <div class="proj-card-img">
-        <img src="img_reston.png" alt="Screenshot de la plateforme Resto'N" />
-        <span class="proj-card-num">02</span>
-      </div>
-      <div class="proj-card-body">
-        <div class="proj-tags">
-          <span class="ptag">Full-Stack</span>
-          <span class="ptag">SAE Universitaire</span>
-          <span class="ptag">Base de données</span>
+  <main id="main" class="page">
+    <section class="section" style="padding-top:3rem">
+      <div class="container">
+        <div class="filters reveal" role="group" aria-label="Filtrer les projets">
+          <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">Toutes<span class="count"></span></button>
+          <button class="filter-btn" type="button" data-filter="data-bi" aria-pressed="false">Data &amp; BI<span class="count"></span></button>
+          <button class="filter-btn" type="button" data-filter="web" aria-pressed="false">Web &amp; Full-Stack<span class="count"></span></button>
+          <button class="filter-btn" type="button" data-filter="algo" aria-pressed="false">Algo &amp; Automatisation<span class="count"></span></button>
         </div>
-        <h3>Resto'N — Application SaaS de gestion de restauration</h3>
-        <p>Solution complète de gestion d'établissements de restauration développée dans le cadre d'une SAE. Couvre l'intégralité des flux : réservations, prise de commandes et gestion des stocks en temps réel.</p>
-        <div class="proj-details">
-          <div class="proj-detail-item">
-            <span class="detail-bullet">✦</span>
-            <span><strong>Architecture de données :</strong> Modélisation et implémentation d'une base relationnelle garantissant la cohérence stocks / commandes.</span>
-          </div>
-          <div class="proj-detail-item">
-            <span class="detail-bullet">✦</span>
-            <span><strong>Module Analytics :</strong> Reporting et tableaux de bord d'analyse des ventes pour l'aide à la décision.</span>
-          </div>
-          <div class="proj-detail-item">
-            <span class="detail-bullet">✦</span>
-            <span><strong>Développement Full-Stack :</strong> Conception applicative robuste avec Symfony, gestion des rôles et interface responsive.</span>
-          </div>
-        </div>
-        <div class="proj-stack">
-          <span>PHP</span><span>Symfony</span><span>SQL</span><span>Oracle</span><span>MySQL</span><span>JavaScript</span><span>CSS3</span>
-        </div>
-        <a href="http://reston.ovh" target="_blank" class="proj-link">🌐 Visiter reston.ovh ↗</a>
-      </div>
-    </article>
 
-    <!-- 03 - Bloodshadow -->
-    <article class="proj-card reveal" data-category="fullstack">
-      <div class="proj-card-img">
-        <img src="img_bloodshadow.png" alt="Aperçu du site Bloodshadow" />
-        <span class="proj-card-num">03</span>
-      </div>
-      <div class="proj-card-body">
-        <div class="proj-tags">
-          <span class="ptag">Projet Perso</span>
-          <span class="ptag">Front-End</span>
-          <span class="ptag">Gaming</span>
+        <div class="quests-grid">
+      <article class="frame quest reveal" data-tilt data-category="data-bi">
+        <div class="quest-media">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 320 180">
+            <line class="a-grid" x1="20" y1="150" x2="300" y2="150"/><line class="a-grid" x1="20" y1="110" x2="300" y2="110" stroke-dasharray="3 5"/><line class="a-grid" x1="20" y1="70" x2="300" y2="70" stroke-dasharray="3 5"/><line class="a-grid" x1="20" y1="30" x2="300" y2="30" stroke-dasharray="3 5"/>
+            <rect class="a-bar" x="34" y="104" width="22" height="46"/><rect class="a-bar" x="74" y="84" width="22" height="66"/><rect class="a-bar" x="114" y="96" width="22" height="54"/><rect class="a-bar" x="154" y="64" width="22" height="86"/><rect class="a-bar" x="194" y="74" width="22" height="76"/><rect class="a-bar" x="234" y="48" width="22" height="102"/><rect class="a-bar" x="274" y="36" width="22" height="114"/>
+            <path class="a-line" pathLength="1" d="M45 92 L85 74 L125 82 L165 52 L205 60 L245 34 L285 22"/>
+            <circle class="a-dot" cx="165" cy="52" r="3.5"/><circle class="a-dot" cx="285" cy="22" r="3.5"/>
+            <text class="a-txt" x="20" y="174">PILOTAGE D'ATELIER</text>
+          </svg></div>
+          <span class="rarity r-legend">◆ Légendaire</span>
+          <span class="quest-num" aria-hidden="true">01</span>
         </div>
-        <h3>Bloodshadow — Plateforme communautaire de guilde</h3>
-        <p>Site web complet et autonome conçu pour une guilde Lost Ark. Regroupe tous les outils nécessaires à une communauté de joueurs actifs avec back-office complet.</p>
-        <div class="proj-details">
-          <div class="proj-detail-item">
-            <span class="detail-bullet">✦</span>
-            <span><strong>Gestion des membres :</strong> Authentification, fiches joueurs, rôles et permissions personnalisées.</span>
-          </div>
-          <div class="proj-detail-item">
-            <span class="detail-bullet">✦</span>
-            <span><strong>Planning de raids :</strong> Calendrier interactif avec inscriptions en direct et composition d'équipes.</span>
-          </div>
-          <div class="proj-detail-item">
-            <span class="detail-bullet">✦</span>
-            <span><strong>Intégration &amp; Déploiement :</strong> +228 déploiements continus sur Netlify.</span>
+        <div class="quest-body">
+          <p class="quest-kind">Stage · 12 semaines · Avril – Juin 2026</p>
+          <h3>Econox Production — Tableau de bord Power BI de pilotage d'atelier</h3>
+          <p>Conception en autonomie d'un outil décisionnel pour une entreprise de tôlerie industrielle : de l'extraction des données de l'ERP jusqu'aux tableaux de bord utilisés par la direction et les ateliers.</p>
+          <div class="quest-more" id="qm-01"><div><ul class="bullets"><li><strong>Pilotage d'atelier :</strong> suivi des stocks, de la production et des commandes sur les postes découpage laser, pliage et peinture.</li><li><strong>Indicateurs prédictifs :</strong> modélisation de délais en DAX avec paramètres de simulation interactifs.</li><li><strong>Fiabilisation des flux :</strong> extraction depuis l'ERP, nettoyage Power Query et modélisation décisionnelle.</li></ul></div></div>
+          <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">ERP</span><span class="tag">SQL</span><span class="tag">Modélisation</span></div>
+          <div class="quest-foot">
+            <div class="quest-links"></div>
+            <button class="toggle-more" type="button" aria-expanded="false" aria-controls="qm-01"><i aria-hidden="true">+</i><span>Détails de la quête</span></button>
           </div>
         </div>
-        <div class="proj-stack">
-          <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Netlify CI/CD</span>
+      </article>
+      <article class="frame quest reveal" data-tilt data-category="data-bi">
+        <div class="quest-media">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 320 180">
+            <line class="a-grid" x1="20" y1="150" x2="300" y2="150"/>
+            <rect class="a-bar" x="30" y="110" width="18" height="40"/><rect class="a-bar" x="56" y="92" width="18" height="58"/><rect class="a-bar" x="82" y="120" width="18" height="30"/>
+            <rect class="a-bar" x="220" y="100" width="18" height="50"/><rect class="a-bar" x="246" y="80" width="18" height="70"/><rect class="a-bar" x="272" y="112" width="18" height="38"/>
+            <path d="M140 20 L160 64 L180 20" fill="none" stroke="var(--accent)" stroke-width="10" style="stroke:var(--accent)" opacity=".8"/>
+            <circle class="a-medal" cx="160" cy="98" r="40"/><circle class="a-ring" cx="160" cy="98" r="32"/>
+            <path d="M160 76 l6.5 13.2 14.5 2.1 -10.5 10.2 2.5 14.5 -13-6.8 -13 6.8 2.5-14.5 -10.5-10.2 14.5-2.1z" fill="#2a1a00" opacity=".55"/>
+            <text class="a-txt" x="20" y="174">ANALYSE DÉCISIONNELLE · 2024</text>
+          </svg></div>
+          <span class="rarity r-epic">◆ Épique</span>
+          <span class="quest-num" aria-hidden="true">02</span>
         </div>
-        <a href="https://github.com/Kisytloa/Bloodshadowwebsite" target="_blank" class="proj-link">⌥ Voir sur GitHub ↗</a>
-      </div>
-    </article>
+        <div class="quest-body">
+          <p class="quest-kind">Projet universitaire · Data</p>
+          <h3>Analyse décisionnelle — Jeux Olympiques 2024</h3>
+          <p>Projet data d'envergure : structuration et analyse d'un important volume de données sur les JO de Paris 2024, puis restitution sous forme d'indicateurs décisionnels.</p>
+          <div class="quest-more" id="qm-02"><div><ul class="bullets"><li><strong>Structuration :</strong> modélisation et requêtage des données sous Oracle SQL Developer.</li><li><strong>Analyse :</strong> traduction de besoins fonctionnels en indicateurs clairs et exploitables.</li><li><strong>Restitution :</strong> tableaux de bord interactifs sous Power BI.</li></ul></div></div>
+          <div class="tags"><span class="tag">Oracle</span><span class="tag">SQL Developer</span><span class="tag">Power BI</span><span class="tag">Modélisation</span></div>
+          <div class="quest-foot">
+            <div class="quest-links"></div>
+            <button class="toggle-more" type="button" aria-expanded="false" aria-controls="qm-02"><i aria-hidden="true">+</i><span>Détails de la quête</span></button>
+          </div>
+        </div>
+      </article>
+      <article class="frame quest reveal" data-tilt data-category="web data-bi">
+        <div class="quest-media">
+          <img src="img_reston.png" alt="Page d'accueil de l'application Resto'N" loading="lazy" />
+          <span class="rarity r-epic">◆ Épique</span>
+          <span class="quest-num" aria-hidden="true">03</span>
+        </div>
+        <div class="quest-body">
+          <p class="quest-kind">SAÉ 3.01 · Équipe de 5</p>
+          <h3>Resto'N — Application de gestion de restaurant</h3>
+          <p>Application full-stack couvrant tout le quotidien d'un restaurant : réservations, prise de commandes, gestion des stocks en temps réel et reporting pour le propriétaire.</p>
+          <div class="quest-more" id="qm-03"><div><ul class="bullets"><li><strong>Base de données :</strong> modèle relationnel garantissant la cohérence stocks / commandes (Doctrine ORM).</li><li><strong>Rôles :</strong> espaces propriétaire et serveur avec permissions dédiées.</li><li><strong>Reporting :</strong> module d'analyse des ventes pour le pilotage de l'établissement.</li></ul></div></div>
+          <div class="tags"><span class="tag">PHP</span><span class="tag">Symfony</span><span class="tag">Twig</span><span class="tag">Doctrine</span><span class="tag">MySQL</span><span class="tag">JavaScript</span></div>
+          <div class="quest-foot">
+            <div class="quest-links"><a class="link-rune" href="https://reston.ovh" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h5v2H5v12h12v-5h2v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>reston.ovh</a><a class="link-rune" href="https://github.com/Kisytloa/RestoN" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>Code</a></div>
+            <button class="toggle-more" type="button" aria-expanded="false" aria-controls="qm-03"><i aria-hidden="true">+</i><span>Détails de la quête</span></button>
+          </div>
+        </div>
+      </article>
+      <article class="frame quest reveal" data-tilt data-category="web algo">
+        <div class="quest-media">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 320 180">
+            <line class="a-grid" x1="20" y1="150" x2="300" y2="150"/><line class="a-grid" x1="20" y1="20" x2="20" y2="150"/>
+            <rect class="a-bar" x="34" y="40" width="18" height="110"/><rect class="a-bar" x="68" y="56" width="18" height="94"/><rect class="a-bar" x="102" y="72" width="18" height="78"/><rect class="a-bar" x="136" y="88" width="18" height="62"/><rect class="a-bar" x="170" y="104" width="18" height="46"/><rect class="a-bar" x="204" y="118" width="18" height="32"/><rect class="a-bar" x="238" y="132" width="18" height="18"/>
+            <path class="a-line" pathLength="1" d="M43 70 C120 72 200 74 290 76"/>
+            <text class="a-txt" x="196" y="64" style="font-size:11px">ANNUITÉ</text>
+            <text class="a-txt" x="20" y="174">TABLEAU D'AMORTISSEMENT</text>
+          </svg></div>
+          <span class="rarity r-rare">◆ Rare</span>
+          <span class="quest-num" aria-hidden="true">04</span>
+        </div>
+        <div class="quest-body">
+          <p class="quest-kind">Projet universitaire · Équipe de 3</p>
+          <h3>Générateur de tableaux d'emprunt</h3>
+          <p>Simulateur financier qui génère instantanément le tableau d'amortissement d'un prêt (immobilier, véhicule, consommation) avec coût total du crédit.</p>
+          <div class="quest-more" id="qm-04"><div><ul class="bullets"><li><strong>Deux modes de calcul :</strong> annuités constantes ou amortissements constants.</li><li><strong>Périodicités :</strong> remboursements mensuels, trimestriels, semestriels ou annuels.</li><li><strong>Indicateurs clés :</strong> coût total du crédit et montant total remboursé, interface responsive.</li></ul></div></div>
+          <div class="tags"><span class="tag">JavaScript</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Algorithmique</span></div>
+          <div class="quest-foot">
+            <div class="quest-links"><a class="link-rune" href="https://prog-tableau-emprunt.vercel.app" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h5v2H5v12h12v-5h2v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>Démo</a><a class="link-rune" href="https://github.com/Kisytloa/prog_tableau_emprunt" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>Code</a></div>
+            <button class="toggle-more" type="button" aria-expanded="false" aria-controls="qm-04"><i aria-hidden="true">+</i><span>Détails de la quête</span></button>
+          </div>
+        </div>
+      </article>
+      <article class="frame quest reveal" data-tilt data-category="web algo">
+        <div class="quest-media">
+          <img src="img_epargne.png" alt="Interface du calculateur d'épargne" loading="lazy" />
+          <span class="rarity r-rare">◆ Rare</span>
+          <span class="quest-num" aria-hidden="true">05</span>
+        </div>
+        <div class="quest-body">
+          <p class="quest-kind">Projet universitaire · Finance</p>
+          <h3>Calculateur d'épargne — intérêts par quinzaines</h3>
+          <p>Outil web de simulation qui calcule les intérêts d'un livret par quinzaines, selon les règles bancaires, avec gestion dynamique des versements et retraits.</p>
+          <div class="quest-more" id="qm-05"><div><ul class="bullets"><li><strong>Calcul période par période :</strong> tableau des quinzaines généré automatiquement.</li><li><strong>Temps réel :</strong> soldes et intérêts recalculés à chaque versement ou changement de taux.</li></ul></div></div>
+          <div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">Algorithmique</span></div>
+          <div class="quest-foot">
+            <div class="quest-links"><a class="link-rune" href="https://epargne-iut.vercel.app" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h5v2H5v12h12v-5h2v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>Démo</a><a class="link-rune" href="https://github.com/Kisytloa/epargne" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>Code</a></div>
+            <button class="toggle-more" type="button" aria-expanded="false" aria-controls="qm-05"><i aria-hidden="true">+</i><span>Détails de la quête</span></button>
+          </div>
+        </div>
+      </article>
+      <article class="frame quest reveal" data-tilt data-category="web">
+        <div class="quest-media">
+          <img src="img_bloodshadow.png" alt="Page des raids du site de guilde Bloodshadow" loading="lazy" />
+          <span class="rarity r-rare">◆ Rare</span>
+          <span class="quest-num" aria-hidden="true">06</span>
+        </div>
+        <div class="quest-body">
+          <p class="quest-kind">Projet personnel · Communauté gaming</p>
+          <h3>Bloodshadow — Plateforme de guilde</h3>
+          <p>Site complet pour une guilde de MMORPG : gestion des membres, planning des raids et outils communautaires, avec back-office.</p>
+          <div class="quest-more" id="qm-06"><div><ul class="bullets"><li><strong>Membres :</strong> authentification, fiches joueurs, rôles et permissions.</li><li><strong>Raids :</strong> calendrier avec inscriptions en direct et composition des équipes.</li><li><strong>Déploiement continu :</strong> plus de 228 déploiements sur Netlify.</li></ul></div></div>
+          <div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">Netlify CI/CD</span></div>
+          <div class="quest-foot">
+            <div class="quest-links"></div>
+            <button class="toggle-more" type="button" aria-expanded="false" aria-controls="qm-06"><i aria-hidden="true">+</i><span>Détails de la quête</span></button>
+          </div>
+        </div>
+      </article>
+      <article class="frame quest reveal" data-tilt data-category="algo">
+        <div class="quest-media">
+          <img src="img_bots.png" alt="Aperçu des bots d'automatisation" loading="lazy" />
+          <span class="rarity r-uncommon">◆ Inhabituel</span>
+          <span class="quest-num" aria-hidden="true">07</span>
+        </div>
+        <div class="quest-body">
+          <p class="quest-kind">Projet personnel · Automatisation</p>
+          <h3>Bots &amp; scripts d'automatisation</h3>
+          <p>Ensemble de scripts et de bots qui automatisent des tâches répétitives, avec intégration d'API tierces et exécution programmée.</p>
+          <div class="quest-more" id="qm-07"><div><ul class="bullets"><li><strong>Workflows planifiés :</strong> scripts Python orchestrés via GitHub Actions.</li><li><strong>API :</strong> récupération, parsing et normalisation de flux JSON externes.</li><li><strong>Sécurité :</strong> gestion des jetons d'accès et des permissions.</li></ul></div></div>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Node.js</span><span class="tag">API REST</span><span class="tag">GitHub Actions</span></div>
+          <div class="quest-foot">
+            <div class="quest-links"></div>
+            <button class="toggle-more" type="button" aria-expanded="false" aria-controls="qm-07"><i aria-hidden="true">+</i><span>Détails de la quête</span></button>
+          </div>
+        </div>
+      </article>
+        </div>
 
-    <!-- 04 - Bots d'automatisation -->
-    <article class="proj-card reveal" data-category="scripts">
-      <div class="proj-card-img">
-        <img src="img_bots.png" alt="Aperçu des bots d'automatisation" />
-        <span class="proj-card-num">04</span>
+        <p class="sec-sub reveal" style="text-align:center;margin-top:3rem;font-size:1rem">
+          Rareté : <span class="rarity r-legend">Légendaire</span> expérience en entreprise ·
+          <span class="rarity r-epic">Épique</span> projet d'envergure ·
+          <span class="rarity r-rare">Rare</span> application web ·
+          <span class="rarity r-uncommon">Inhabituel</span> script
+        </p>
       </div>
-      <div class="proj-card-body">
-        <div class="proj-tags">
-          <span class="ptag">Automatisation</span>
-          <span class="ptag">Python</span>
-          <span class="ptag">API REST</span>
-        </div>
-        <h3>Bots &amp; Scripts d'automatisation des flux</h3>
-        <p>Ensemble de scripts et bots développés pour automatiser les tâches répétitives scolaires et administratives. Intégration d'APIs tierces et exécution programmée.</p>
-        <div class="proj-details">
-          <div class="proj-detail-item">
-            <span class="detail-bullet">✦</span>
-            <span><strong>Scripts Python &amp; CI/CD :</strong> Automatisation de workflows réguliers orchestrés via GitHub Actions.</span>
-          </div>
-          <div class="proj-detail-item">
-            <span class="detail-bullet">✦</span>
-            <span><strong>Connexion API :</strong> Récupération, parsing et normalisation de flux de données externes JSON.</span>
-          </div>
-          <div class="proj-detail-item">
-            <span class="detail-bullet">✦</span>
-            <span><strong>Sécurité :</strong> Gestion des tokens d'accès, permissions et intégrité des données.</span>
-          </div>
-        </div>
-        <div class="proj-stack">
-          <span>Python</span><span>Node.js</span><span>API REST</span><span>GitHub Actions</span>
-        </div>
-      </div>
-    </article>
+    </section>
 
-    <!-- 05 - Calculateur d'épargne -->
-    <article class="proj-card reveal" data-category="data-bi fullstack">
-      <div class="proj-card-img">
-        <img src="img_epargne.png" alt="Screenshot Calculateur d'épargne" />
-        <span class="proj-card-num">05</span>
-      </div>
-      <div class="proj-card-body">
-        <div class="proj-tags">
-          <span class="ptag">Finance &amp; Data</span>
-          <span class="ptag">Algorithmique</span>
-          <span class="ptag">Web</span>
-        </div>
-        <h3>Calculateur d'épargne — Simulateur d'intérêts simples</h3>
-        <p>Outil web de simulation financière permettant de calculer avec précision les intérêts bancaires par quinzaines, avec gestion dynamique des versements et retraits.</p>
-        <div class="proj-details">
-          <div class="proj-detail-item">
-            <span class="detail-bullet">✦</span>
-            <span><strong>Tableau d'amortissement :</strong> Calcul automatique et instantané période par période selon les règles bancaires officielles.</span>
-          </div>
-          <div class="proj-detail-item">
-            <span class="detail-bullet">✦</span>
-            <span><strong>Mise à jour en temps réel :</strong> Réévaluation dynamique des soldes et intérêts lors de tout versement ou modification de taux.</span>
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="frame cta-band reveal reveal-z">
+          <div class="cta-glow" aria-hidden="true"></div>
+          <p class="overline">Nouvelle <i>quête</i></p>
+          <h2 class="title">Un stagiaire ou alternant <em>Data</em> ?</h2>
+          <p>Disponible dès <strong>janvier 2027</strong> pour un stage de fin d'études en Data / BI, ou ouvert à une <strong>alternance</strong>.</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="contact.html">Me contacter <span class="arr" aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="contact.html#cv"><span class="bevel" aria-hidden="true"></span>Consulter mes CV</a>
           </div>
         </div>
-        <div class="proj-stack">
-          <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Algorithmique</span>
-        </div>
-        <a href="https://github.com/Kisytloa/epargne" target="_blank" class="proj-link">⌥ Voir sur GitHub ↗</a>
       </div>
-    </article>
-
+    </section>
   </main>
 
-  <!-- CTA BAS DE PAGE -->
-  <section class="projects-cta">
-    <div class="section-tag">// Recrutement &amp; Opportunités</div>
-    <h2 class="cta-text reveal">À la recherche d'un stagiaire ou alternant en Data ?</h2>
-    <p class="reveal" style="color: var(--muted); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-      Disponible dès <strong>début janvier 2027</strong> pour un stage de fin d'études en Data / BI, ou ouvert à une opportunité en <strong>alternance</strong>.
-    </p>
-    <div class="reveal" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-      <a href="contact.html" class="btn-fill">Me contacter pour échanger →</a>
-      <a href="contact.html#cv-section" class="btn-outline">Consulter mes CV (Stage / Alternance) ↗</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
+  <!-- ═══ PIED DE PAGE ═══ -->
   <footer>
-    <span>© 2026 Yanis <strong>Dutilleul</strong> · Portfolio Data &amp; Informatique</span>
-    <nav class="footer-nav">
+    <img class="foot-emblem" src="logo-192.png" alt="" width="54" height="54" loading="lazy" />
+    <div class="foot-name">Yanis Dutilleul</div>
+    <p class="foot-motto">« Des données brutes naissent les décisions éclairées. »</p>
+    <nav class="foot-nav" aria-label="Liens de pied de page">
       <a href="index.html">Accueil</a>
       <a href="projets.html">Projets</a>
       <a href="contact.html">Contact</a>
-      <a href="mentions-legales.html">Mentions Légales</a>
+      <a href="mentions-legales.html">Mentions légales</a>
     </nav>
+    <div class="foot-social">
+      <a href="https://www.linkedin.com/in/yanis-dutilleul-544088357/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+      <a href="https://github.com/Kisytloa" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg></a>
+      <a href="mailto:yanisdutilleul21112006@gmail.com" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.5l10 6.25L22 6.5V6H2zm20 2.86-10 6.25L2 8.86V18h20V8.86z"/></svg></a>
+    </div>
+    <p class="foot-copy">© <span data-year>2026</span> Yanis Dutilleul · Portfolio Data &amp; Informatique · Forgé à la main, sans framework.</p>
   </footer>
 
   <script src="script.js"></script>

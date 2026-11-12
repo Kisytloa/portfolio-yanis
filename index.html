@@ -1,324 +1,426 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js" data-page="home">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="google-site-verification" content="TmmiE5WnkHJF2FdghV4OZSdoodd4v6s-AmvVGoYvjyQ" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio de Yanis Dutilleul, étudiant en 3ème année de BUT Informatique parcours DATA à Reims. Recherche active d'un stage pour début janvier 2027 ou d'une alternance en Data & Business Intelligence." />
-  <title>Yanis Dutilleul Portfolio Data & Informatique</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/x-icon" href="Logo Yanis-Photoroom.png">
+  <title>Yanis Dutilleul Portfolio Data &amp; Informatique</title>
+  <meta name="description" content="Portfolio de Yanis Dutilleul, étudiant en 3e année de BUT Informatique parcours Data à Reims. Recherche un stage dès janvier 2027 ou une alternance en Data &amp; Business Intelligence." />
+  <meta name="author" content="Yanis Dutilleul" />
+  <meta name="theme-color" content="#060a15" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Yanis Dutilleul Portfolio Data &amp; Informatique" />
+  <meta property="og:description" content="Portfolio de Yanis Dutilleul, étudiant en 3e année de BUT Informatique parcours Data à Reims. Recherche un stage dès janvier 2027 ou une alternance en Data &amp; Business Intelligence." />
+  <meta property="og:image" content="logo-192.png" />
+  <link rel="icon" type="image/png" href="logo-64.png" />
+  <link rel="apple-touch-icon" href="logo-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&amp;family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500;1,600&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script>
+    /* Avant le premier rendu : faction mémorisée + intro (1 fois par session, accueil uniquement) */
+    (function (h) {
+      h.className = h.className.replace('no-js', 'js');
+      try {
+        if (localStorage.getItem('faction') === 'ombre') h.dataset.faction = 'ombre';
+        if (h.dataset.page === 'home' && !sessionStorage.getItem('eveil') &&
+            !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('intro-on');
+      } catch (e) {}
+    })(document.documentElement);
+  </script>
 </head>
 <body>
 
-  <!-- TOP SCROLL PROGRESS BAR -->
-  <div id="scroll-progress"></div>
+  <!-- ═══ INTRO « ÉVEIL » ═══ -->
+  <div id="intro" aria-hidden="true">
+    <div class="intro-inner">
+      <div class="intro-sigil">
+        <svg class="intro-circle" viewBox="0 0 400 400">
+          <circle class="ic-draw" pathLength="1" cx="200" cy="200" r="190"/>
+          <circle class="ic-draw" pathLength="1" cx="200" cy="200" r="168"/>
+          <polygon class="ic-draw" pathLength="1" points="200,48 331.6,276 68.4,276"/>
+          <polygon class="ic-draw" pathLength="1" points="200,352 68.4,124 331.6,124"/>
+          <circle class="ic-draw" pathLength="1" cx="200" cy="200" r="88"/>
+          <g class="ic-spin"><text><textPath href="#icPath" textLength="1110" lengthAdjust="spacing">✦ DATA ✦ CODE ✦ DÉCISION ✦ ÉVEIL ✦ DATA ✦ CODE ✦ DÉCISION ✦ ÉVEIL</textPath></text></g>
+          <defs><path id="icPath" d="M200 200 m-179 0 a179 179 0 1 1 358 0 a179 179 0 1 1 -358 0"/></defs>
+        </svg>
+        <div class="intro-flash"></div>
+      </div>
+      <div class="intro-name">YANIS DUTILLEUL<small>L'éveil commence…</small></div>
+    </div>
+    <div class="intro-skip">Cliquer pour passer</div>
+  </div>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <canvas id="aether" aria-hidden="true"></canvas>
 
-  <!-- MOBILE NAV -->
-  <div class="mobile-nav" id="mobileNav">
-    <button class="mobile-close" id="mobileClose">✕</button>
-    <a href="index.html" class="active">Accueil</a>
+  <!-- ═══ NAVIGATION ═══ -->
+  <header id="navbar">
+    <a href="index.html" class="nav-logo" aria-label="Yanis Dutilleul — accueil">
+      <img src="logo-64.png" alt="" width="38" height="38" />
+      <span>Yanis Dutilleul<small>Data &amp; Développement</small></span>
+    </a>
+    <nav aria-label="Navigation principale">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active" aria-current="page">Accueil</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <button class="faction-toggle" type="button" aria-label="Changer de faction : Lumière ou Ombre" aria-pressed="false" data-hover>
+        <span class="ft-knob" aria-hidden="true"></span>
+        <svg class="ft-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM4.2 5.6l1.4-1.4 2.1 2.1-1.4 1.4zm12.1 12.1 1.4-1.4 2.1 2.1-1.4 1.4zM4.2 18.4l2.1-2.1 1.4 1.4-2.1 2.1zM16.3 6.3l2.1-2.1 1.4 1.4-2.1 2.1z"/></svg>
+        <svg class="ft-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A9 9 0 0 1 9.5 3a9 9 0 1 0 11.5 11.5z"/></svg>
+      </button>
+      <a class="btn btn-gold btn-sm nav-cta" href="contact.html">Me recruter</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="Navigation mobile">
+    <a href="index.html" class="active" aria-current="page">Accueil</a>
     <a href="projets.html">Projets</a>
     <a href="contact.html">Contact</a>
-  </div>
-
-  <!-- FLOATING GLASS NAVBAR -->
-  <nav id="navbar">
-    <a href="index.html" class="nav-logo">
-      YD<span class="nav-logo-dot"></span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Accueil</a></li>
-      <li><a href="projets.html">Projets</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <a href="contact.html" class="nav-cta">
-      <span>Me recruter</span>
-      <span style="font-size: 0.9rem;">→</span>
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="mn-rune" aria-hidden="true"></div>
+    <a href="mentions-legales.html" style="font-size:1rem">Mentions légales</a>
   </nav>
 
-  <!-- ═══ HERO ═══ -->
-  <section id="hero">
-    <div class="hero-badge reveal">
-      <span class="pulse-dot"></span>
-      <span>Recherche de Stage (dès janv. 2027) ou Alternance · BUT 3 DATA</span>
-    </div>
+  <main id="main" class="page">
 
-    <h1 class="reveal">
-      Yanis <span class="hero-gradient-text">Dutilleul</span>
-    </h1>
-
-    <p class="hero-role reveal">
-      3ème année de BUT Informatique — Spécialisation <strong>DATA</strong>
-    </p>
-    <p class="hero-seek reveal">
-      <span>✦</span> Administration, Gestion &amp; Exploitation des Données · Reims <span>✦</span>
-    </p>
-
-    <div class="hero-actions reveal">
-      <a href="projets.html" class="btn-fill">Explorer mes projets →</a>
-      <a href="contact.html" class="btn-outline">Me contacter</a>
-    </div>
-
-    <!-- Animated Key Metrics -->
-    <div class="hero-stats reveal">
-      <div class="stat-item">
-        <span class="stat-num" data-target="3" data-suffix="e">0</span>
-        <span class="stat-label">Année BUT Info Data</span>
+    <!-- ═══ HÉROS ═══ -->
+    <section id="hero">
+      <div class="sky" data-sky aria-hidden="true"></div>
+      <div class="hero-stage" data-depth=".12" aria-hidden="true">
+        <div class="rune-circle" data-rune-circle></div>
+        <div class="wings" data-wings></div>
       </div>
-      <div class="stat-item">
-        <span class="stat-num" data-target="12" data-suffix=" sem.">0</span>
-        <span class="stat-label">Stage Econox ERP/BI</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num" data-target="5" data-suffix="+">0</span>
-        <span class="stat-label">Projets d'envergure</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num" data-target="100" data-suffix="%">0</span>
-        <span class="stat-label">Dispo Stage / Alternance</span>
-      </div>
-    </div>
-  </section>
 
-  <!-- ═══ PROFIL ═══ -->
-  <section id="about">
-    <div class="section-tag">// Profil</div>
-    <div class="about-grid">
-      <div class="about-card about-left reveal">
-        <h2 class="section-title">Passionné par la <em>Data &amp; le Code.</em></h2>
-        <p>Étudiant en 3ème année de BUT Informatique à l'IUT de Reims, je me spécialise dans la valorisation, l'administration et l'exploitation des données.</p>
-        <p>Fort d'une expérience concrète de <strong>12 semaines en entreprise chez Econox Production</strong>, j'ai développé une solide expertise dans l'extraction de données depuis un progiciel ERP et la réalisation de tableaux de bord décisionnels interactifs sous <strong>Power BI</strong>.</p>
-        <p>Ma rigueur, mon esprit d'analyse et ma capacité d'apprentissage rapide me permettent de transformer des flux de données complexes en leviers de performance stratégiques.</p>
-        <p>Actuellement à la recherche d'un <strong>stage pour début janvier 2027</strong> (semestre 6) ou d'une opportunité en <strong>alternance</strong>, je souhaite mettre mes compétences au service de projets data concrets et stimulants.</p>
-
-        <div class="badges-group">
-          <div class="badges-label">Soft skills &amp; ATOUTS</div>
-          <div class="tags-wrap">
-            <span>⚡ Rigueur &amp; Organisation</span>
-            <span>⚡ Analyse &amp; Esprit critique</span>
-            <span>⚡ Esprit d'équipe</span>
-            <span>⚡ Adaptabilité rapide</span>
-            <span>⚡ Curiosité technologique</span>
-          </div>
+      <div class="hero-content">
+        <p class="hero-over hero-fade" style="--t:.1s">✦ L'éveil d'un Daeva de la Data ✦</p>
+        <h1 class="hero-name" aria-label="Yanis Dutilleul">
+          <span class="line" data-split data-split-reset>Yanis</span>
+          <span class="line line-2" data-split>Dutilleul</span>
+        </h1>
+        <p class="hero-role hero-fade" style="--t:1.1s">BUT 3 Informatique · Parcours <b>Data</b></p>
+        <p class="hero-tag hero-fade" style="--t:1.3s">Je forge des tableaux de bord et des applications qui transforment la donnée brute en décisions éclairées.</p>
+        <div class="quest-badge hero-fade" style="--t:1.5s">
+          <span class="q-icon" aria-hidden="true">!</span>
+          <span><b>Quête active :</b> stage dès janvier 2027 (14–16 sem.) ou alternance</span>
         </div>
-
-        <div class="badges-group" style="margin-top: 1.25rem;">
-          <div class="badges-label">Centres d'intérêt</div>
-          <div class="tags-wrap">
-            <span>🎮 E-sport</span>
-            <span>🏀 Basket-Ball</span>
-            <span>✈️ Voyages</span>
-            <span>📋 Gestion de projets</span>
-          </div>
+        <div class="hero-actions hero-fade" style="--t:1.7s">
+          <a class="btn btn-gold" href="projets.html">Explorer mes quêtes <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="contact.html"><span class="bevel" aria-hidden="true"></span>Me contacter</a>
         </div>
       </div>
 
-      <div class="about-card about-right reveal">
-        <div class="info-table">
-          <div class="info-row">
-            <span class="info-k">Localisation</span>
-            <span class="info-v">Reims, France</span>
-          </div>
-          <div class="info-row">
-            <span class="info-k">Formation</span>
-            <span class="info-v">BUT 3 Informatique (DATA)</span>
-          </div>
-          <div class="info-row">
-            <span class="info-k">Disponibilité</span>
-            <span class="info-v highlight">Stage (dès janv. 2027) / Alternance</span>
-          </div>
-          <div class="info-row">
-            <span class="info-k">Email</span>
-            <span class="info-v" style="font-size: 0.8rem;">yanisdutilleul21112006@gmail.com</span>
-          </div>
-        </div>
+      <div class="scroll-hint" aria-hidden="true"><span>Défiler</span><span class="sh-line"></span></div>
+    </section>
 
-        <div class="badges-label" style="margin-bottom: 0.75rem;">Langues</div>
-        <div class="langs">
-          <div class="lang-row">
-            <span>Français</span>
-            <div class="lang-track"><div class="lang-bar" data-w="100"></div></div>
-            <span class="lang-lvl">Natif</span>
-          </div>
-          <div class="lang-row">
-            <span>Anglais</span>
-            <div class="lang-track"><div class="lang-bar" data-w="75"></div></div>
-            <span class="lang-lvl">B2</span>
-          </div>
-          <div class="lang-row">
-            <span>Allemand</span>
-            <div class="lang-track"><div class="lang-bar" data-w="50"></div></div>
-            <span class="lang-lvl">B1</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ COMPÉTENCES ═══ -->
-  <section id="skills">
-    <div class="section-tag">// Compétences</div>
-    <h2 class="section-title reveal">Stack technique &amp; <em>Savoir-faire.</em></h2>
-    
-    <a href="https://docs.google.com/spreadsheets/d/1V5MSTwOdySupA17iOOHL-KxqkTmcdY-EEjulKrXPCmY/edit?usp=sharing" target="_blank" class="btn-outline reveal" style="margin-bottom: 2.5rem; display: inline-flex;">
-      📊 Consulter mon tableau de compétences détaillé ↗
-    </a>
-
-    <div class="skills-grid">
-      <div class="skill-bloc reveal">
-        <div class="skill-bloc-title">📊 Données &amp; Décisionnel</div>
-        <div class="tags-wrap">
-          <span>Power BI</span><span>DAX</span><span>Power Query</span>
-          <span>SQL</span><span>Oracle</span><span>PostgreSQL</span>
-          <span>Pandas</span><span>NumPy</span><span>Access</span>
-        </div>
-      </div>
-
-      <div class="skill-bloc reveal">
-        <div class="skill-bloc-title">💻 Développement &amp; Web</div>
-        <div class="tags-wrap">
-          <span>Python</span><span>PHP</span><span>Symfony</span>
-          <span>JavaScript</span><span>HTML5 / CSS3</span>
-          <span>React</span><span>Node.js</span><span>API REST</span>
-        </div>
-      </div>
-
-      <div class="skill-bloc reveal">
-        <div class="skill-bloc-title">🛠️ Outils, DevOps &amp; Méthodes</div>
-        <div class="tags-wrap">
-          <span>Docker</span><span>Git / GitHub</span><span>VS Code</span>
-          <span>PyCharm</span><span>PhpStorm</span><span>GitHub Actions</span>
-          <span>MS Project</span><span>Gantt</span><span>Agile / Scrum</span>
-        </div>
+    <!-- ═══ STATISTIQUES ═══ -->
+    <div class="stats">
+      <div class="frame stats-grid reveal">
+        <div class="stat"><span class="stat-num" data-count="3" data-suffix="e">3<small>e</small></span><span class="stat-label">Année de BUT Data</span></div>
+        <div class="stat"><span class="stat-num" data-count="12" data-suffix="sem.">12<small>sem.</small></span><span class="stat-label">Stage BI en entreprise</span></div>
+        <div class="stat"><span class="stat-num" data-count="7">7</span><span class="stat-label">Quêtes réalisées</span></div>
+        <div class="stat"><span class="stat-num" data-count="2027">2027</span><span class="stat-label">Disponible dès janvier</span></div>
       </div>
     </div>
 
-    <!-- Jauges de maîtrise -->
-    <div class="bars reveal">
-      <div class="bar-item">
-        <div class="bar-meta"><span>Business Intelligence &amp; Power BI</span><span class="bar-pct">85%</span></div>
-        <div class="bar-track"><div class="bar-fill" data-w="85"></div></div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-meta"><span>Bases de données &amp; SQL (Oracle, MySQL, PostgreSQL)</span><span class="bar-pct">85%</span></div>
-        <div class="bar-track"><div class="bar-fill" data-w="85"></div></div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-meta"><span>Python pour la Data (Pandas, NumPy, Scripts)</span><span class="bar-pct">80%</span></div>
-        <div class="bar-track"><div class="bar-fill" data-w="80"></div></div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-meta"><span>Développement Web &amp; Interfaces (HTML/CSS, JS)</span><span class="bar-pct">85%</span></div>
-        <div class="bar-track"><div class="bar-fill" data-w="85"></div></div>
-      </div>
-      <div class="bar-item">
-        <div class="bar-meta"><span>Back-End &amp; Frameworks (PHP, Symfony)</span><span class="bar-pct">75%</span></div>
-        <div class="bar-track"><div class="bar-fill" data-w="75"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ EXPÉRIENCE PROFESSIONNELLE ═══ -->
-  <section id="experience">
-    <div class="section-tag">// Expérience en entreprise</div>
-    <h2 class="section-title reveal">Parcours <em>professionnel.</em></h2>
-
-    <div class="timeline">
-      <div class="timeline-card reveal">
-        <div class="timeline-meta">
-          <span class="timeline-year">2026</span>
-          <span class="timeline-badge">Stage · 12 semaines</span>
+    <!-- ═══ FICHE DE PERSONNAGE ═══ -->
+    <section class="section" id="profil">
+      <div class="container">
+        <div class="sec-head reveal">
+          <p class="overline">Fiche de <i>personnage</i></p>
+          <h2 class="title">Passionné par la <em>Data</em> &amp; le Code</h2>
+          <p class="sec-sub">Étudiant à l'IUT de Reims, je valorise, administre et exploite les données pour en faire des leviers de décision.</p>
         </div>
-        <div>
-          <div class="timeline-title">Stage Business Intelligence &amp; Data — Econox Production</div>
-          <div class="timeline-sub">Econox Production · Stage de 2ème année BUT Informatique</div>
-          <p class="timeline-desc">
-            Prise en charge intégrale d'un projet décisionnel : extraction et transformation de données métier directement depuis l'ERP d'entreprise, modélisation relationnelle et création de tableaux de bord interactifs sous <strong>Power BI</strong> pour l'optimisation du pilotage et l'aide à la décision.
-          </p>
-          <div class="tags-wrap">
-            <span>Power BI</span><span>ERP</span><span>SQL</span><span>DAX</span><span>Power Query</span><span>Reporting interactif</span>
+        <div class="char-grid">
+          <aside class="frame char-card reveal reveal-l" aria-label="Fiche d'identité">
+            <div class="emblem">
+              <svg viewBox="0 0 200 200" aria-hidden="true">
+                <defs><path id="emPath" d="M100 100 m-82 0 a82 82 0 1 1 164 0 a82 82 0 1 1 -164 0"/></defs>
+                <circle class="em-ring" cx="100" cy="100" r="97"/>
+                <polygon class="em-ring" points="100,10 190,100 100,190 10,100" opacity=".25"/>
+                <g class="em-spin"><circle class="em-dash" cx="100" cy="100" r="91"/><text class="em-text"><textPath href="#emPath" textLength="508" lengthAdjust="spacing">YANIS DUTILLEUL ✦ ANALYSTE DATA ✦ BUT 3 ✦</textPath></text></g>
+                <g class="em-spin-rev"><circle class="em-ring" cx="100" cy="100" r="68" stroke-dasharray="36 8"/></g>
+              </svg>
+              <img src="logo-192.png" alt="Emblème YD de Yanis Dutilleul" width="104" height="104" />
+            </div>
+            <div class="char-name">Yanis Dutilleul</div>
+            <div class="char-class">Analyste Data &amp; Développeur</div>
+            <div class="lvl">✦ Niveau BUT 3 ✦</div>
+            <dl class="attr-list">
+              <div class="attr"><dt>Région</dt><dd>Reims, Grand Est · mobile</dd></div>
+              <div class="attr"><dt>Guilde</dt><dd>IUT de Reims-Châlons-Charleville</dd></div>
+              <div class="attr"><dt>Quête</dt><dd class="hl">Stage janv. 2027 · Alternance</dd></div>
+              <div class="attr"><dt>Missive</dt><dd><a href="mailto:yanisdutilleul21112006@gmail.com">yanisdutilleul21112006@gmail.com</a></dd></div>
+            </dl>
+            <div class="sub-label">Langues</div>
+          <div class="gauge">
+            <div class="gauge-head"><span>Français</span><span>Natif</span></div>
+            <div class="gauge-track"><div class="gauge-fill" data-w="100"></div></div>
+          </div>
+          <div class="gauge">
+            <div class="gauge-head"><span>Anglais</span><span>B2</span></div>
+            <div class="gauge-track"><div class="gauge-fill" data-w="75"></div></div>
+          </div>
+          <div class="gauge">
+            <div class="gauge-head"><span>Allemand</span><span>B1</span></div>
+            <div class="gauge-track"><div class="gauge-fill" data-w="50"></div></div>
+          </div>
+          </aside>
+
+          <div class="frame lore reveal reveal-r">
+            <h3>De la donnée brute à la <em>décision éclairée.</em></h3>
+            <p>Étudiant en 3e année de BUT Informatique à l'IUT de Reims, parcours <strong>Administration, Gestion et Exploitation des Données</strong>, je maîtrise la chaîne complète de valorisation de la donnée : modélisation, SQL avancé, automatisation de flux et restitution visuelle.</p>
+            <p>Lors de mon <strong>stage de 12 semaines chez Econox Production</strong>, j'ai conçu en autonomie un tableau de bord <strong>Power BI</strong> de pilotage d'atelier, alimenté par l'ERP de l'entreprise, avec des indicateurs prédictifs de délais en DAX.</p>
+            <p>Rigoureux, autonome et force de proposition, je recherche un <strong>stage de 14 à 16 semaines dès janvier 2027</strong> ou une <strong>alternance</strong> pour contribuer à des projets décisionnels concrets.</p>
+
+            <div class="sub-label">Traits de caractère</div>
+            <div class="chips"><span class="chip chip-diamond">Rigueur &amp; organisation</span><span class="chip chip-diamond">Analyse &amp; esprit critique</span><span class="chip chip-diamond">Esprit d'équipe</span><span class="chip chip-diamond">Autonomie</span><span class="chip chip-diamond">Adaptabilité rapide</span><span class="chip chip-diamond">Curiosité technologique</span></div>
+
+            <div class="sub-label">Hors du donjon</div>
+            <div class="chips"><span class="chip chip-diamond">E-sport</span><span class="chip chip-diamond">Basket-ball</span><span class="chip chip-diamond">Voyages</span><span class="chip chip-diamond">Organisation &amp; gestion de projets</span></div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══ FORMATION ═══ -->
-  <section id="formation">
-    <div class="section-tag">// Formation</div>
-    <h2 class="section-title reveal">Cursus <em>académique.</em></h2>
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 46 18"><path d="M23 1l8 8-8 8-8-8z" fill="none" stroke="currentColor"/><path d="M23 5l4 4-4 4-4-4z" fill="currentColor"/><circle cx="5" cy="9" r="1.5" fill="currentColor"/><circle cx="41" cy="9" r="1.5" fill="currentColor"/></svg></div>
 
-    <div class="timeline">
-      <div class="timeline-card reveal">
-        <div class="timeline-meta">
-          <span class="timeline-year">2024 — 2027</span>
-          <span class="timeline-badge" style="color: var(--cyan); background: rgba(6, 182, 212, 0.1); border-color: rgba(6, 182, 212, 0.25);">En cours</span>
+    <!-- ═══ ARBRE DE COMPÉTENCES ═══ -->
+    <section class="section" id="competences">
+      <div class="container">
+        <div class="sec-head reveal">
+          <p class="overline">Arbre de <i>compétences</i></p>
+          <h2 class="title">Stack technique &amp; <em>savoir-faire</em></h2>
+          <p class="sec-sub">Trois voies de spécialisation, forgées en cours, en projet et en entreprise.</p>
         </div>
-        <div>
-          <div class="timeline-title">BUT Informatique — 3ème année (Parcours DATA)</div>
-          <div class="timeline-sub">IUT de Reims-Châlons-Charleville · Université de Reims Champagne-Ardenne</div>
-          <p class="timeline-desc">
-            Parcours Administration, Gestion et Exploitation des Données. Apprentissage approfondi de la gouvernance des données, Business Intelligence, modélisation de bases massives, développement full-stack et conduite de projets agiles.
-          </p>
+        <div class="skills-grid" data-stagger>
+          <article class="frame skill-branch reveal" data-tilt>
+            <div class="sigil"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+            <h3>Données &amp; Décisionnel</h3>
+            <p class="branch-sub">Voie de l'Analyste</p>
+            <div class="chips"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Power Query</span><span class="chip">SQL</span><span class="chip">Oracle</span><span class="chip">PostgreSQL</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Access</span><span class="chip">PhpMyAdmin</span></div>
+          </article>
+          <article class="frame skill-branch reveal" data-tilt>
+            <div class="sigil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6M14 4l-4 16"/></svg></div>
+            <h3>Développement &amp; Web</h3>
+            <p class="branch-sub">Voie de l'Artisan</p>
+            <div class="chips"><span class="chip">Python</span><span class="chip">PHP</span><span class="chip">Symfony</span><span class="chip">Twig</span><span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">HTML5 / CSS3</span><span class="chip">Node.js</span><span class="chip">API REST</span></div>
+          </article>
+          <article class="frame skill-branch reveal" data-tilt>
+            <div class="sigil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div>
+            <h3>Outils &amp; Méthodes</h3>
+            <p class="branch-sub">Voie du Stratège</p>
+            <div class="chips"><span class="chip">Docker</span><span class="chip">Git / GitHub</span><span class="chip">GitHub Actions</span><span class="chip">VS Code</span><span class="chip">PyCharm</span><span class="chip">PhpStorm</span><span class="chip">SQL Developer</span><span class="chip">MS Project</span><span class="chip">Gantt</span><span class="chip">MS Planner</span><span class="chip">Agile / Scrum</span></div>
+          </article>
+        </div>
+
+        <div class="frame mastery reveal">
+          <div class="sub-label">Niveau de maîtrise</div>
+          <div class="gauge">
+            <div class="gauge-head"><span>Business Intelligence &amp; Power BI</span><span>85 %</span></div>
+            <div class="gauge-track"><div class="gauge-fill" data-w="85"></div></div>
+          </div>
+          <div class="gauge">
+            <div class="gauge-head"><span>Bases de données &amp; SQL</span><span>85 %</span></div>
+            <div class="gauge-track"><div class="gauge-fill" data-w="85"></div></div>
+          </div>
+          <div class="gauge">
+            <div class="gauge-head"><span>Python pour la Data (Pandas, NumPy)</span><span>80 %</span></div>
+            <div class="gauge-track"><div class="gauge-fill" data-w="80"></div></div>
+          </div>
+          <div class="gauge">
+            <div class="gauge-head"><span>Développement Web (HTML, CSS, JS)</span><span>85 %</span></div>
+            <div class="gauge-track"><div class="gauge-fill" data-w="85"></div></div>
+          </div>
+          <div class="gauge">
+            <div class="gauge-head"><span>Back-end (PHP, Symfony)</span><span>75 %</span></div>
+            <div class="gauge-track"><div class="gauge-fill" data-w="75"></div></div>
+          </div>
+        </div>
+
+        <div class="skills-cta reveal">
+          <a class="btn btn-ghost" href="https://docs.google.com/spreadsheets/d/1V5MSTwOdySupA17iOOHL-KxqkTmcdY-EEjulKrXPCmY/edit?usp=sharing" target="_blank" rel="noopener"><span class="bevel" aria-hidden="true"></span>Tableau de compétences détaillé <span class="arr" aria-hidden="true">↗</span></a>
         </div>
       </div>
+    </section>
 
-      <div class="timeline-card reveal">
-        <div class="timeline-meta">
-          <span class="timeline-year">2024</span>
-          <span class="timeline-badge" style="color: var(--amber); background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.25);">Diplômé</span>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Power BI</span><span>SQL</span><span>Python</span><span>DAX</span><span>Oracle</span><span>Symfony</span><span>Pandas</span><span>JavaScript</span><span>Power Query</span><span>PostgreSQL</span><span>Docker</span><span>PHP</span><span>React</span><span>Git</span><span>Power BI</span><span>SQL</span><span>Python</span><span>DAX</span><span>Oracle</span><span>Symfony</span><span>Pandas</span><span>JavaScript</span><span>Power Query</span><span>PostgreSQL</span><span>Docker</span><span>PHP</span><span>React</span><span>Git</span></div></div>
+
+    <!-- ═══ CHRONIQUES ═══ -->
+    <section class="section" id="parcours">
+      <div class="container">
+        <div class="sec-head reveal">
+          <p class="overline">Les <i>chroniques</i></p>
+          <h2 class="title">Expérience &amp; <em>formation</em></h2>
         </div>
-        <div>
-          <div class="timeline-title">Baccalauréat Technologique STI2D</div>
-          <div class="timeline-sub">Lycée Saint Jean-Baptiste de La Salle · Reims</div>
-          <p class="timeline-desc">
-            Spécialité Systèmes d'Information et Numérique (SIN). Initiation à la programmation, aux architectures logicielles et aux réseaux.
-          </p>
+        <div class="timeline">
+          <div class="tl-line" aria-hidden="true"><i></i></div>
+
+          <div class="tl-item">
+            <span class="tl-gem" aria-hidden="true"></span>
+            <article class="frame tl-card reveal reveal-l">
+              <div class="tl-meta"><span class="tl-year">Avril – Juin 2026</span><span class="rarity r-legend">◆ Stage · 12 sem.</span></div>
+              <h3>Stage Business Intelligence &amp; Data</h3>
+              <p class="tl-org">Econox Production · tôlerie industrielle</p>
+              <ul class="bullets">
+                <li>Conception en autonomie d'un <strong>tableau de bord Power BI de pilotage d'atelier</strong> (découpage laser, pliage, peinture) : stocks, production, commandes.</li>
+                <li>Modélisation d'<strong>indicateurs prédictifs de délais en DAX</strong> avec paramètres de simulation interactifs.</li>
+                <li><strong>Extraction des données</strong> depuis l'ERP et fiabilisation des flux de données brutes.</li>
+              </ul>
+              <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">ERP</span><span class="tag">SQL</span></div>
+            </article>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-gem" aria-hidden="true"></span>
+            <article class="frame tl-card reveal reveal-r">
+              <div class="tl-meta"><span class="tl-year">2024 — 2027</span><span class="rarity r-epic">◆ En cours</span></div>
+              <h3>BUT Informatique — Parcours Data</h3>
+              <p class="tl-org">IUT de Reims-Châlons-Charleville · Université de Reims Champagne-Ardenne</p>
+              <p>Parcours Administration, Gestion et Exploitation des Données : gouvernance et modélisation des données, Business Intelligence, développement full-stack et conduite de projets agiles.</p>
+            </article>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-gem" aria-hidden="true"></span>
+            <article class="frame tl-card reveal reveal-l">
+              <div class="tl-meta"><span class="tl-year">2024</span><span class="rarity r-rare">◆ Diplômé</span></div>
+              <h3>Baccalauréat Technologique STI2D</h3>
+              <p class="tl-org">Lycée Saint Jean-Baptiste de La Salle · Reims</p>
+              <p>Spécialité Systèmes d'Information et Numérique (SIN) : premiers pas en programmation, architectures logicielles et réseaux.</p>
+            </article>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 46 18"><path d="M23 1l8 8-8 8-8-8z" fill="none" stroke="currentColor"/><path d="M23 5l4 4-4 4-4-4z" fill="currentColor"/><circle cx="5" cy="9" r="1.5" fill="currentColor"/><circle cx="41" cy="9" r="1.5" fill="currentColor"/></svg></div>
+
+    <!-- ═══ QUÊTES PHARES ═══ -->
+    <section class="section" id="quetes">
+      <div class="container">
+        <div class="sec-head reveal">
+          <p class="overline">Quêtes <i>accomplies</i></p>
+          <h2 class="title">Projets <em>phares</em></h2>
+          <p class="sec-sub">Une sélection de réalisations, de l'entreprise à l'université.</p>
+        </div>
+        <div class="quests-grid three" data-stagger>
+      <article class="frame quest reveal" data-tilt data-category="data-bi">
+        <div class="quest-media">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 320 180">
+            <line class="a-grid" x1="20" y1="150" x2="300" y2="150"/><line class="a-grid" x1="20" y1="110" x2="300" y2="110" stroke-dasharray="3 5"/><line class="a-grid" x1="20" y1="70" x2="300" y2="70" stroke-dasharray="3 5"/><line class="a-grid" x1="20" y1="30" x2="300" y2="30" stroke-dasharray="3 5"/>
+            <rect class="a-bar" x="34" y="104" width="22" height="46"/><rect class="a-bar" x="74" y="84" width="22" height="66"/><rect class="a-bar" x="114" y="96" width="22" height="54"/><rect class="a-bar" x="154" y="64" width="22" height="86"/><rect class="a-bar" x="194" y="74" width="22" height="76"/><rect class="a-bar" x="234" y="48" width="22" height="102"/><rect class="a-bar" x="274" y="36" width="22" height="114"/>
+            <path class="a-line" pathLength="1" d="M45 92 L85 74 L125 82 L165 52 L205 60 L245 34 L285 22"/>
+            <circle class="a-dot" cx="165" cy="52" r="3.5"/><circle class="a-dot" cx="285" cy="22" r="3.5"/>
+            <text class="a-txt" x="20" y="174">PILOTAGE D'ATELIER</text>
+          </svg></div>
+          <span class="rarity r-legend">◆ Légendaire</span>
+          <span class="quest-num" aria-hidden="true">01</span>
+        </div>
+        <div class="quest-body">
+          <p class="quest-kind">Stage · 12 semaines · Avril – Juin 2026</p>
+          <h3>Econox Production — Tableau de bord Power BI de pilotage d'atelier</h3>
+          <p>Conception en autonomie d'un outil décisionnel pour une entreprise de tôlerie industrielle : de l'extraction des données de l'ERP jusqu'aux tableaux de bord utilisés par la direction et les ateliers.</p>
+          <div class="quest-more" id="qm-01"><div><ul class="bullets"><li><strong>Pilotage d'atelier :</strong> suivi des stocks, de la production et des commandes sur les postes découpage laser, pliage et peinture.</li><li><strong>Indicateurs prédictifs :</strong> modélisation de délais en DAX avec paramètres de simulation interactifs.</li><li><strong>Fiabilisation des flux :</strong> extraction depuis l'ERP, nettoyage Power Query et modélisation décisionnelle.</li></ul></div></div>
+          <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">ERP</span><span class="tag">SQL</span><span class="tag">Modélisation</span></div>
+          <div class="quest-foot">
+            <div class="quest-links"></div>
+            <button class="toggle-more" type="button" aria-expanded="false" aria-controls="qm-01"><i aria-hidden="true">+</i><span>Détails de la quête</span></button>
+          </div>
+        </div>
+      </article>
+      <article class="frame quest reveal" data-tilt data-category="web data-bi">
+        <div class="quest-media">
+          <img src="img_reston.png" alt="Page d'accueil de l'application Resto'N" loading="lazy" />
+          <span class="rarity r-epic">◆ Épique</span>
+          <span class="quest-num" aria-hidden="true">03</span>
+        </div>
+        <div class="quest-body">
+          <p class="quest-kind">SAÉ 3.01 · Équipe de 5</p>
+          <h3>Resto'N — Application de gestion de restaurant</h3>
+          <p>Application full-stack couvrant tout le quotidien d'un restaurant : réservations, prise de commandes, gestion des stocks en temps réel et reporting pour le propriétaire.</p>
+          <div class="quest-more" id="qm-03"><div><ul class="bullets"><li><strong>Base de données :</strong> modèle relationnel garantissant la cohérence stocks / commandes (Doctrine ORM).</li><li><strong>Rôles :</strong> espaces propriétaire et serveur avec permissions dédiées.</li><li><strong>Reporting :</strong> module d'analyse des ventes pour le pilotage de l'établissement.</li></ul></div></div>
+          <div class="tags"><span class="tag">PHP</span><span class="tag">Symfony</span><span class="tag">Twig</span><span class="tag">Doctrine</span><span class="tag">MySQL</span><span class="tag">JavaScript</span></div>
+          <div class="quest-foot">
+            <div class="quest-links"><a class="link-rune" href="https://reston.ovh" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h5v2H5v12h12v-5h2v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>reston.ovh</a><a class="link-rune" href="https://github.com/Kisytloa/RestoN" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>Code</a></div>
+            <button class="toggle-more" type="button" aria-expanded="false" aria-controls="qm-03"><i aria-hidden="true">+</i><span>Détails de la quête</span></button>
+          </div>
+        </div>
+      </article>
+      <article class="frame quest reveal" data-tilt data-category="web algo">
+        <div class="quest-media">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 320 180">
+            <line class="a-grid" x1="20" y1="150" x2="300" y2="150"/><line class="a-grid" x1="20" y1="20" x2="20" y2="150"/>
+            <rect class="a-bar" x="34" y="40" width="18" height="110"/><rect class="a-bar" x="68" y="56" width="18" height="94"/><rect class="a-bar" x="102" y="72" width="18" height="78"/><rect class="a-bar" x="136" y="88" width="18" height="62"/><rect class="a-bar" x="170" y="104" width="18" height="46"/><rect class="a-bar" x="204" y="118" width="18" height="32"/><rect class="a-bar" x="238" y="132" width="18" height="18"/>
+            <path class="a-line" pathLength="1" d="M43 70 C120 72 200 74 290 76"/>
+            <text class="a-txt" x="196" y="64" style="font-size:11px">ANNUITÉ</text>
+            <text class="a-txt" x="20" y="174">TABLEAU D'AMORTISSEMENT</text>
+          </svg></div>
+          <span class="rarity r-rare">◆ Rare</span>
+          <span class="quest-num" aria-hidden="true">04</span>
+        </div>
+        <div class="quest-body">
+          <p class="quest-kind">Projet universitaire · Équipe de 3</p>
+          <h3>Générateur de tableaux d'emprunt</h3>
+          <p>Simulateur financier qui génère instantanément le tableau d'amortissement d'un prêt (immobilier, véhicule, consommation) avec coût total du crédit.</p>
+          <div class="quest-more" id="qm-04"><div><ul class="bullets"><li><strong>Deux modes de calcul :</strong> annuités constantes ou amortissements constants.</li><li><strong>Périodicités :</strong> remboursements mensuels, trimestriels, semestriels ou annuels.</li><li><strong>Indicateurs clés :</strong> coût total du crédit et montant total remboursé, interface responsive.</li></ul></div></div>
+          <div class="tags"><span class="tag">JavaScript</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Algorithmique</span></div>
+          <div class="quest-foot">
+            <div class="quest-links"><a class="link-rune" href="https://prog-tableau-emprunt.vercel.app" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h5v2H5v12h12v-5h2v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>Démo</a><a class="link-rune" href="https://github.com/Kisytloa/prog_tableau_emprunt" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>Code</a></div>
+            <button class="toggle-more" type="button" aria-expanded="false" aria-controls="qm-04"><i aria-hidden="true">+</i><span>Détails de la quête</span></button>
+          </div>
+        </div>
+      </article>
+        </div>
+        <div class="see-all reveal">
+          <a class="btn btn-ghost" href="projets.html"><span class="bevel" aria-hidden="true"></span>Ouvrir le codex complet <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ APPEL À L'AVENTURE ═══ -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="frame cta-band reveal reveal-z">
+          <div class="cta-glow" aria-hidden="true"></div>
+          <p class="overline">Rejoindre <i>l'aventure</i></p>
+          <h2 class="title">Votre prochaine recrue <em>Data</em> ?</h2>
+          <p>Disponible dès <strong>janvier 2027</strong> pour un stage de 14 à 16 semaines en Data / BI, ou ouvert à une <strong>alternance</strong>. Réponse sous 24 h.</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold" href="contact.html">Me contacter <span class="arr" aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="contact.html#cv"><span class="bevel" aria-hidden="true"></span>Consulter mes CV</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══ PIED DE PAGE ═══ -->
   <footer>
-    <span>© 2026 Yanis <strong>Dutilleul</strong> · Portfolio Data &amp; Informatique</span>
-    <nav class="footer-nav">
+    <img class="foot-emblem" src="logo-192.png" alt="" width="54" height="54" loading="lazy" />
+    <div class="foot-name">Yanis Dutilleul</div>
+    <p class="foot-motto">« Des données brutes naissent les décisions éclairées. »</p>
+    <nav class="foot-nav" aria-label="Liens de pied de page">
       <a href="index.html">Accueil</a>
       <a href="projets.html">Projets</a>
       <a href="contact.html">Contact</a>
-      <a href="#" id="openLegal">Mentions Légales</a>
+      <a href="mentions-legales.html">Mentions légales</a>
     </nav>
-  </footer>
-
-  <!-- MODAL MENTIONS LÉGALES -->
-  <div class="modal-overlay" id="legalModal">
-    <div class="modal-content">
-      <button class="modal-close" id="closeLegal">✕</button>
-      <h2>Éditeur du site</h2>
-      <p><strong>Nom :</strong> Yanis Dutilleul</p>
-      <p><strong>Adresse e-mail :</strong> yanisdutilleul21112006@gmail.com</p>
-      <p><strong>Statut :</strong> Étudiant en BUT Informatique</p>
-
-      <h2>Hébergement</h2>
-      <p>Ce site est hébergé par <strong>Vercel Inc.</strong></p>
-      <p><strong>Adresse :</strong> 440 N Barranca Ave #4133, Covina, CA 91723, USA</p>
-      <p><strong>Site web :</strong> <a href="https://yanis-dut.vercel.app" target="_blank" style="color: var(--cyan);">https://vercel.com/</a></p>
-
-      <h2>Propriété intellectuelle</h2>
-      <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés.</p>
-
-      <h2>Données personnelles</h2>
-      <p>Ce site ne collecte aucune donnée personnelle identifiable de ses visiteurs. Aucune information n'est stockée à des fins de suivi ou d'analyse.</p>
+    <div class="foot-social">
+      <a href="https://www.linkedin.com/in/yanis-dutilleul-544088357/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+      <a href="https://github.com/Kisytloa" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg></a>
+      <a href="mailto:yanisdutilleul21112006@gmail.com" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.5l10 6.25L22 6.5V6H2zm20 2.86-10 6.25L2 8.86V18h20V8.86z"/></svg></a>
     </div>
-  </div>
+    <p class="foot-copy">© <span data-year>2026</span> Yanis Dutilleul · Portfolio Data &amp; Informatique · Forgé à la main, sans framework.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>

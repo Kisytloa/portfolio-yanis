@@ -1,103 +1,131 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js" data-page="legal">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Mentions légales du portfolio de Yanis Dutilleul, étudiant en 3ème année de BUT Informatique à Reims." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Yanis Dutilleul Mentions Légales</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/x-icon" href="Logo Yanis-Photoroom.png">
+  <meta name="description" content="Mentions légales du portfolio de Yanis Dutilleul, étudiant en 3e année de BUT Informatique à Reims." />
+  <meta name="author" content="Yanis Dutilleul" />
+  <meta name="theme-color" content="#060a15" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Yanis Dutilleul Mentions Légales" />
+  <meta property="og:description" content="Mentions légales du portfolio de Yanis Dutilleul, étudiant en 3e année de BUT Informatique à Reims." />
+  <meta property="og:image" content="logo-192.png" />
+  <link rel="icon" type="image/png" href="logo-64.png" />
+  <link rel="apple-touch-icon" href="logo-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&amp;family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500;1,600&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script>
+    /* Avant le premier rendu : faction mémorisée + intro (1 fois par session, accueil uniquement) */
+    (function (h) {
+      h.className = h.className.replace('no-js', 'js');
+      try {
+        if (localStorage.getItem('faction') === 'ombre') h.dataset.faction = 'ombre';
+        if (h.dataset.page === 'home' && !sessionStorage.getItem('eveil') &&
+            !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('intro-on');
+      } catch (e) {}
+    })(document.documentElement);
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <canvas id="aether" aria-hidden="true"></canvas>
 
-  <!-- TOP SCROLL PROGRESS BAR -->
-  <div id="scroll-progress"></div>
+  <!-- ═══ NAVIGATION ═══ -->
+  <header id="navbar">
+    <a href="index.html" class="nav-logo" aria-label="Yanis Dutilleul — accueil">
+      <img src="logo-64.png" alt="" width="38" height="38" />
+      <span>Yanis Dutilleul<small>Data &amp; Développement</small></span>
+    </a>
+    <nav aria-label="Navigation principale">
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <button class="faction-toggle" type="button" aria-label="Changer de faction : Lumière ou Ombre" aria-pressed="false" data-hover>
+        <span class="ft-knob" aria-hidden="true"></span>
+        <svg class="ft-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM4.2 5.6l1.4-1.4 2.1 2.1-1.4 1.4zm12.1 12.1 1.4-1.4 2.1 2.1-1.4 1.4zM4.2 18.4l2.1-2.1 1.4 1.4-2.1 2.1zM16.3 6.3l2.1-2.1 1.4 1.4-2.1 2.1z"/></svg>
+        <svg class="ft-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A9 9 0 0 1 9.5 3a9 9 0 1 0 11.5 11.5z"/></svg>
+      </button>
+      <a class="btn btn-gold btn-sm nav-cta" href="contact.html">Me recruter</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-  <!-- MOBILE NAV -->
-  <div class="mobile-nav" id="mobileNav">
-    <button class="mobile-close" id="mobileClose">✕</button>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Navigation mobile">
     <a href="index.html">Accueil</a>
     <a href="projets.html">Projets</a>
     <a href="contact.html">Contact</a>
-    <a href="mentions-legales.html" class="active">Mentions Légales</a>
-  </div>
-
-  <!-- FLOATING GLASS NAVBAR -->
-  <nav id="navbar">
-    <a href="index.html" class="nav-logo">
-      YD<span class="nav-logo-dot"></span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="projets.html">Projets</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="mentions-legales.html" class="active">Mentions Légales</a></li>
-    </ul>
-    <a href="contact.html" class="nav-cta">
-      <span>Me recruter</span>
-      <span style="font-size: 0.9rem;">→</span>
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="mn-rune" aria-hidden="true"></div>
+    <a href="mentions-legales.html" class="active" aria-current="page" style="font-size:1rem">Mentions légales</a>
   </nav>
 
-  <!-- ═══ PAGE HEADER ═══ -->
-  <header class="page-header">
-    <div class="section-tag">// Informations Légales</div>
-    <h1 class="page-title reveal">
-      Mentions <span class="hero-gradient-text">Légales.</span>
-    </h1>
-    <p class="page-desc reveal">
-      Informations juridiques concernant l'édition et l'hébergement de ce site personnel.
-    </p>
+  <!-- ═══ EN-TÊTE ═══ -->
+  <header class="page-hero">
+    <div class="sky" data-sky aria-hidden="true"></div>
+    <div class="hero-stage" data-depth=".1" aria-hidden="true">
+      <div class="rune-circle" data-rune-circle></div>
+    </div>
+    <div>
+      <p class="hero-over hero-fade" style="--t:.1s">✦ Informations légales ✦</p>
+      <h1 class="page-title" aria-label="Mentions légales"><span data-split data-split-reset>Mentions</span> <span class="accent" data-split>légales</span></h1>
+      <p class="page-desc hero-fade" style="--t:.7s">Informations juridiques concernant l'édition et l'hébergement de ce site personnel.</p>
+    </div>
   </header>
 
-  <!-- ═══ MENTIONS LÉGALES CONTENT ═══ -->
-  <main style="max-width: 800px; margin: 0 auto; padding: 0 1.5rem 4rem;">
-    <div class="about-card reveal" style="display: flex; flex-direction: column; gap: 2rem;">
-      <div>
-        <h2 style="font-size: 1.35rem; color: #fff; margin-bottom: 0.65rem;">1. Éditeur du site</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 0.35rem;"><strong>Nom :</strong> Yanis Dutilleul</p>
-        <p style="color: var(--text-secondary); margin-bottom: 0.35rem;"><strong>Adresse e-mail :</strong> <a href="mailto:yanisdutilleul21112006@gmail.com" style="color: var(--cyan);">yanisdutilleul21112006@gmail.com</a></p>
-        <p style="color: var(--text-secondary);"><strong>Statut :</strong> Étudiant en 3ème année de BUT Informatique (Parcours DATA)</p>
+  <main id="main" class="page">
+    <section class="section" style="padding-top:3rem">
+      <div class="frame legal reveal">
+        <section>
+          <h2><span><b>I</b></span>Éditeur du site</h2>
+          <p><strong>Nom :</strong> Yanis Dutilleul</p>
+          <p><strong>Adresse e-mail :</strong> <a href="mailto:yanisdutilleul21112006@gmail.com">yanisdutilleul21112006@gmail.com</a></p>
+          <p><strong>Statut :</strong> étudiant en 3e année de BUT Informatique (parcours Data)</p>
+        </section>
+        <section>
+          <h2><span><b>II</b></span>Hébergement</h2>
+          <p>Ce site est hébergé par <strong>Vercel Inc.</strong></p>
+          <p><strong>Adresse :</strong> 440 N Barranca Ave #4133, Covina, CA 91723, USA</p>
+          <p><strong>Site web :</strong> <a href="https://vercel.com/" target="_blank" rel="noopener">vercel.com</a></p>
+        </section>
+        <section>
+          <h2><span><b>III</b></span>Propriété intellectuelle</h2>
+          <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques. L'univers graphique s'inspire librement de l'esthétique des MMORPG de fantasy ; toutes les illustrations du site sont originales et générées en code.</p>
+        </section>
+        <section>
+          <h2><span><b>IV</b></span>Données personnelles</h2>
+          <p>Ce site ne collecte aucune donnée personnelle de ses visiteurs. Seule votre préférence de thème (Lumière / Ombre) est enregistrée localement dans votre navigateur ; elle n'est jamais transmise.</p>
+        </section>
       </div>
-
-      <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem;">
-        <h2 style="font-size: 1.35rem; color: #fff; margin-bottom: 0.65rem;">2. Hébergement</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 0.35rem;">Ce site est hébergé par <strong>Vercel Inc.</strong></p>
-        <p style="color: var(--text-secondary); margin-bottom: 0.35rem;"><strong>Adresse :</strong> 440 N Barranca Ave #4133, Covina, CA 91723, USA</p>
-        <p style="color: var(--text-secondary);"><strong>Site web :</strong> <a href="https://vercel.com/" target="_blank" style="color: var(--cyan);">https://vercel.com/</a></p>
-      </div>
-
-      <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem;">
-        <h2 style="font-size: 1.35rem; color: #fff; margin-bottom: 0.65rem;">3. Propriété intellectuelle</h2>
-        <p style="color: var(--text-secondary); line-height: 1.75;">
-          L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.
-        </p>
-      </div>
-
-      <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem;">
-        <h2 style="font-size: 1.35rem; color: #fff; margin-bottom: 0.65rem;">4. Données personnelles</h2>
-        <p style="color: var(--text-secondary); line-height: 1.75;">
-          Ce site ne collecte aucune donnée personnelle identifiable de ses visiteurs. Aucune information n'est stockée à des fins de suivi publicitaire ou d'analyse intrusive.
-        </p>
-      </div>
-    </div>
+    </section>
   </main>
 
-  <!-- FOOTER -->
+  <!-- ═══ PIED DE PAGE ═══ -->
   <footer>
-    <span>© 2026 Yanis <strong>Dutilleul</strong> · Portfolio Data &amp; Informatique</span>
-    <nav class="footer-nav">
+    <img class="foot-emblem" src="logo-192.png" alt="" width="54" height="54" loading="lazy" />
+    <div class="foot-name">Yanis Dutilleul</div>
+    <p class="foot-motto">« Des données brutes naissent les décisions éclairées. »</p>
+    <nav class="foot-nav" aria-label="Liens de pied de page">
       <a href="index.html">Accueil</a>
       <a href="projets.html">Projets</a>
       <a href="contact.html">Contact</a>
-      <a href="mentions-legales.html">Mentions Légales</a>
+      <a href="mentions-legales.html">Mentions légales</a>
     </nav>
+    <div class="foot-social">
+      <a href="https://www.linkedin.com/in/yanis-dutilleul-544088357/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+      <a href="https://github.com/Kisytloa" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg></a>
+      <a href="mailto:yanisdutilleul21112006@gmail.com" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.5l10 6.25L22 6.5V6H2zm20 2.86-10 6.25L2 8.86V18h20V8.86z"/></svg></a>
+    </div>
+    <p class="foot-copy">© <span data-year>2026</span> Yanis Dutilleul · Portfolio Data &amp; Informatique · Forgé à la main, sans framework.</p>
   </footer>
 
   <script src="script.js"></script>

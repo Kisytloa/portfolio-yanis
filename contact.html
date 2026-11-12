@@ -1,200 +1,191 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="no-js" data-page="contact">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Contactez Yanis Dutilleul, étudiant en 3ème année de BUT Informatique (DATA) à Reims. Disponible pour un stage dès début janvier 2027 ou en alternance." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Yanis Dutilleul Contact · Stage &amp; Alternance</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/x-icon" href="Logo Yanis-Photoroom.png">
+  <meta name="description" content="Contactez Yanis Dutilleul, étudiant en 3e année de BUT Informatique (Data) à Reims. Disponible pour un stage dès janvier 2027 ou en alternance. CV téléchargeable." />
+  <meta name="author" content="Yanis Dutilleul" />
+  <meta name="theme-color" content="#060a15" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Yanis Dutilleul Contact · Stage &amp; Alternance" />
+  <meta property="og:description" content="Contactez Yanis Dutilleul, étudiant en 3e année de BUT Informatique (Data) à Reims. Disponible pour un stage dès janvier 2027 ou en alternance. CV téléchargeable." />
+  <meta property="og:image" content="logo-192.png" />
+  <link rel="icon" type="image/png" href="logo-64.png" />
+  <link rel="apple-touch-icon" href="logo-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&amp;family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500;1,600&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script>
+    /* Avant le premier rendu : faction mémorisée + intro (1 fois par session, accueil uniquement) */
+    (function (h) {
+      h.className = h.className.replace('no-js', 'js');
+      try {
+        if (localStorage.getItem('faction') === 'ombre') h.dataset.faction = 'ombre';
+        if (h.dataset.page === 'home' && !sessionStorage.getItem('eveil') &&
+            !matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('intro-on');
+      } catch (e) {}
+    })(document.documentElement);
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <canvas id="aether" aria-hidden="true"></canvas>
 
-  <!-- TOP SCROLL PROGRESS BAR -->
-  <div id="scroll-progress"></div>
-
-  <!-- MOBILE NAV -->
-  <div class="mobile-nav" id="mobileNav">
-    <button class="mobile-close" id="mobileClose">✕</button>
-    <a href="index.html">Accueil</a>
-    <a href="projets.html">Projets</a>
-    <a href="contact.html" class="active">Contact</a>
-  </div>
-
-  <!-- FLOATING GLASS NAVBAR -->
-  <nav id="navbar">
-    <a href="index.html" class="nav-logo">
-      YD<span class="nav-logo-dot"></span>
+  <!-- ═══ NAVIGATION ═══ -->
+  <header id="navbar">
+    <a href="index.html" class="nav-logo" aria-label="Yanis Dutilleul — accueil">
+      <img src="logo-64.png" alt="" width="38" height="38" />
+      <span>Yanis Dutilleul<small>Data &amp; Développement</small></span>
     </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="projets.html">Projets</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
-    </ul>
-    <a href="mailto:yanisdutilleul21112006@gmail.com" class="nav-cta">
-      <span>Me recruter</span>
-      <span style="font-size: 0.9rem;">→</span>
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- ═══ PAGE HEADER ═══ -->
-  <header class="page-header">
-    <div class="hero-badge reveal" style="margin-bottom: 1.25rem;">
-      <span class="pulse-dot"></span>
-      <span>Recherche de Stage (janv. 2027) ou Alternance</span>
+    <nav aria-label="Navigation principale">
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <button class="faction-toggle" type="button" aria-label="Changer de faction : Lumière ou Ombre" aria-pressed="false" data-hover>
+        <span class="ft-knob" aria-hidden="true"></span>
+        <svg class="ft-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM11 1h2v3h-2zm0 19h2v3h-2zM1 11h3v2H1zm19 0h3v2h-3zM4.2 5.6l1.4-1.4 2.1 2.1-1.4 1.4zm12.1 12.1 1.4-1.4 2.1 2.1-1.4 1.4zM4.2 18.4l2.1-2.1 1.4 1.4-2.1 2.1zM16.3 6.3l2.1-2.1 1.4 1.4-2.1 2.1z"/></svg>
+        <svg class="ft-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A9 9 0 0 1 9.5 3a9 9 0 1 0 11.5 11.5z"/></svg>
+      </button>
+      <a class="btn btn-gold btn-sm nav-cta" href="contact.html">Me recruter</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <h1 class="page-title reveal">
-      Travaillons <span class="hero-gradient-text">ensemble.</span>
-    </h1>
-    <p class="page-desc reveal">
-      À la recherche d'un <strong>stage de fin d'études dès début janvier 2027</strong> ou d'une <strong>alternance</strong> en Data / Business Intelligence (BUT 3 Informatique). Réponse sous 24h.
-    </p>
   </header>
 
-  <!-- ═══ CONTACT MAIN ═══ -->
-  <main id="contact-main" style="max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem 4rem;">
-    <div class="contact-grid">
+  <nav class="mobile-nav" id="mobileNav" aria-label="Navigation mobile">
+    <a href="index.html">Accueil</a>
+    <a href="projets.html">Projets</a>
+    <a href="contact.html" class="active" aria-current="page">Contact</a>
+    <div class="mn-rune" aria-hidden="true"></div>
+    <a href="mentions-legales.html" style="font-size:1rem">Mentions légales</a>
+  </nav>
 
-      <div class="contact-infos reveal">
-        <div class="section-tag">// Coordonnées directes</div>
-        <h2 class="section-title">Comment me <em>joindre.</em></h2>
+  <!-- ═══ EN-TÊTE ═══ -->
+  <header class="page-hero">
+    <div class="sky" data-sky aria-hidden="true"></div>
+    <div class="hero-stage" data-depth=".1" aria-hidden="true">
+      <div class="rune-circle" data-rune-circle></div>
+    </div>
+    <div>
+      <p class="hero-over hero-fade" style="--t:.1s">✦ Rejoindre l'aventure ✦</p>
+      <h1 class="page-title" aria-label="Travaillons ensemble"><span data-split data-split-reset>Travaillons</span> <span class="accent" data-split>ensemble</span></h1>
+      <p class="page-desc hero-fade" style="--t:.7s">Vous cherchez un stagiaire dès janvier 2027 ou un alternant en Data / BI ? Envoyez une missive, réponse sous 24 h.</p>
+    </div>
+  </header>
 
-        <div class="contact-cards">
-          <!-- Email Card -->
-          <div class="contact-card">
-            <div class="cc-icon">✉</div>
-            <div style="flex-grow: 1;">
-              <div class="cc-label">Email direct</div>
-              <a href="mailto:yanisdutilleul21112006@gmail.com" class="cc-val" style="color: var(--primary-light); font-size: 0.88rem; word-break: break-all;">
-                yanisdutilleul21112006@gmail.com
-              </a>
-              <div>
-                <button class="copy-btn" data-copy="yanisdutilleul21112006@gmail.com">
-                  📋 Copier l'e-mail
-                </button>
+  <main id="main" class="page">
+    <section class="section" style="padding-top:3rem">
+      <div class="container">
+        <div class="contact-grid" data-stagger>
+          <div class="frame portal reveal">
+            <div class="portal-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.5l10 6.25L22 6.5V6H2zm20 2.86-10 6.25L2 8.86V18h20V8.86z"/></svg></div>
+            <div>
+              <div class="portal-label">Missive directe</div>
+              <a class="portal-val" href="mailto:yanisdutilleul21112006@gmail.com">yanisdutilleul21112006@gmail.com</a>
+              <div><button class="copy-btn" type="button" data-copy="yanisdutilleul21112006@gmail.com">Copier l'adresse</button></div>
+            </div>
+          </div>
+          <div class="frame portal reveal">
+            <div class="portal-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></div>
+            <div>
+              <div class="portal-label">Point d'ancrage</div>
+              <div class="portal-val">Reims, France</div>
+              <div class="portal-sub">Grand Est · mobile</div>
+            </div>
+          </div>
+          <a class="frame portal reveal" href="https://www.linkedin.com/in/yanis-dutilleul-544088357/" target="_blank" rel="noopener">
+            <div class="portal-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></div>
+            <div>
+              <div class="portal-label">Réseau professionnel</div>
+              <div class="portal-val">LinkedIn</div>
+              <div class="portal-sub">Yanis Dutilleul</div>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="frame portal reveal" href="https://github.com/Kisytloa" target="_blank" rel="noopener">
+            <div class="portal-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg></div>
+            <div>
+              <div class="portal-label">Code source</div>
+              <div class="portal-val">GitHub</div>
+              <div class="portal-sub">github.com/Kisytloa</div>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <div class="frame dispo reveal">
+            <span class="pulse" aria-hidden="true"></span>
+            <span>Disponible dès <strong>janvier 2027</strong> pour un <strong>stage de 14 à 16 semaines</strong>, ou dès maintenant pour une <strong>alternance</strong> en Data, BI &amp; informatique.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 46 18"><path d="M23 1l8 8-8 8-8-8z" fill="none" stroke="currentColor"/><path d="M23 5l4 4-4 4-4-4z" fill="currentColor"/><circle cx="5" cy="9" r="1.5" fill="currentColor"/><circle cx="41" cy="9" r="1.5" fill="currentColor"/></svg></div>
+
+    <!-- ═══ PARCHEMINS (CV) ═══ -->
+    <section class="section" id="cv">
+      <div class="container">
+        <div class="sec-head reveal">
+          <p class="overline">Les <i>parchemins</i></p>
+          <h2 class="title">Consulter mon <em>CV</em></h2>
+          <p class="sec-sub">Deux versions selon votre besoin : stage de fin d'études ou alternance.</p>
+        </div>
+        <div class="cv-wrap">
+          <div class="frame cv-info reveal reveal-l">
+            <p>Parcours universitaire en Data, stage chez Econox Production, compétences techniques et projets : tout est réuni sur une page.</p>
+            <div class="scrolls" role="group" aria-label="Version du CV">
+              <button class="scroll-btn active" type="button" data-cv="stage" aria-pressed="true"><b>Version Stage</b><span>Dès janvier 2027</span></button>
+              <button class="scroll-btn" type="button" data-cv="alternance" aria-pressed="false"><b>Version Alternance</b><span>Rythme alterné</span></button>
+            </div>
+            <dl class="attr-list cv-meta">
+              <div class="attr"><dt>Format</dt><dd>PDF</dd></div>
+              <div class="attr"><dt>Mise à jour</dt><dd>Octobre 2026</dd></div>
+              <div class="attr"><dt>Profil visé</dt><dd class="hl" id="cvProfil">Stage Data / BI — janv. 2027</dd></div>
+              <div class="attr"><dt id="cvExtraK">Durée</dt><dd id="cvExtraV">14 à 16 semaines</dd></div>
+            </dl>
+            <div class="cv-actions">
+              <a class="btn btn-gold" id="cvDownload" data-cv-link href="CV_Yanis_Dutilleul_Stage.pdf" download="CV_Yanis_Dutilleul_Stage.pdf"><span class="lbl">Télécharger le CV Stage</span> <span class="arr" aria-hidden="true">↓</span></a>
+              <a class="btn btn-ghost" data-cv-link href="CV_Yanis_Dutilleul_Stage.pdf" target="_blank" rel="noopener"><span class="bevel" aria-hidden="true"></span>Plein écran</a>
+            </div>
+          </div>
+          <div class="frame cv-preview reveal reveal-r">
+            <div class="cv-frame">
+              <iframe id="cvIframe" src="CV_Yanis_Dutilleul_Stage.pdf#view=FitH&navpanes=0" title="CV Yanis Dutilleul — version Stage" loading="lazy"></iframe>
+              <div class="cv-frame-overlay">
+                <a class="link-rune" data-cv-link href="CV_Yanis_Dutilleul_Stage.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h5v2H5v12h12v-5h2v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>Ouvrir le document</a>
               </div>
             </div>
           </div>
-
-          <!-- Localisation -->
-          <div class="contact-card">
-            <div class="cc-icon">📍</div>
-            <div>
-              <div class="cc-label">Localisation</div>
-              <div class="cc-val">Reims, France</div>
-              <div style="font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem;">Région Grand Est / Mobile</div>
-            </div>
-          </div>
-
-          <!-- LinkedIn -->
-          <a href="https://www.linkedin.com/in/yanis-dutilleul-544088357/" target="_blank" class="contact-card">
-            <div class="cc-icon" style="color: #38bdf8; background: rgba(56, 189, 248, 0.1); border-color: rgba(56, 189, 248, 0.25);">in</div>
-            <div>
-              <div class="cc-label">Réseau professionnel</div>
-              <div class="cc-val">LinkedIn ↗</div>
-              <div style="font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem;">Yanis Dutilleul</div>
-            </div>
-          </a>
-
-          <!-- GitHub -->
-          <a href="https://github.com/Kisytloa" target="_blank" class="contact-card">
-            <div class="cc-icon">⌥</div>
-            <div>
-              <div class="cc-label">Code source &amp; Dépôts</div>
-              <div class="cc-val">GitHub ↗</div>
-              <div style="font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem;">github.com/Kisytloa</div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Disponibilité Badge -->
-        <div class="contact-dispo">
-          <span class="pulse-dot"></span>
-          <span>
-            Disponible dès <strong>début janvier 2027</strong> pour un <strong>stage</strong> (ou dès à présent en <strong>alternance</strong>) en Data, BI &amp; Informatique.
-          </span>
         </div>
       </div>
-
-    </div>
+    </section>
   </main>
 
-  <!-- ═══ CV SECTION ═══ -->
-  <section id="cv-section">
-    <div class="cv-inner reveal">
-      <div class="cv-text">
-        <div class="section-tag">// Curriculum Vitae</div>
-        <h2 class="section-title">Consulter <em>mon CV.</em></h2>
-        <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-          Retrouvez le récapitulatif complet de mon parcours universitaire en DATA, mon stage chez Econox Production, mes compétences logicielles et l'ensemble de mes projets.
-        </p>
-
-        <!-- SÉLECTEUR DE VERSION DU CV -->
-        <div class="cv-toggle-wrapper">
-          <span class="cv-toggle-label">Choisissez la version du CV :</span>
-          <div class="cv-toggle-group" role="tablist">
-            <button type="button" class="cv-toggle-btn active" id="btnCvStage" data-cv="stage" role="tab" aria-selected="true">
-              <span class="toggle-dot"></span>
-              <span>🎯 Version Stage (Janv. 2027)</span>
-            </button>
-            <button type="button" class="cv-toggle-btn" id="btnCvAlternance" data-cv="alternance" role="tab" aria-selected="false">
-              <span class="toggle-dot"></span>
-              <span>💼 Version Alternance</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="cv-meta">
-          <div class="cv-meta-item">
-            <span class="cv-meta-label">Format</span>
-            <span class="cv-meta-val">PDF Haute Définition</span>
-          </div>
-          <div class="cv-meta-item">
-            <span class="cv-meta-label">Mise à jour</span>
-            <span class="cv-meta-val">Octobre 2026</span>
-          </div>
-          <div class="cv-meta-item">
-            <span class="cv-meta-label">Profil visé</span>
-            <span class="cv-meta-val" id="cvMetaProfil">Stage Data (Janv. 2027)</span>
-          </div>
-          <div class="cv-meta-item" id="cvMetaExtraItem">
-            <span class="cv-meta-label">Durée</span>
-            <span class="cv-meta-val" id="cvMetaExtra">14 à 16 semaines</span>
-          </div>
-        </div>
-
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <a href="CV_Yanis_Dutilleul_Stage.pdf" download="CV_Yanis_Dutilleul_Stage.pdf" id="cvDownloadBtn" class="btn-fill">⬇ Télécharger le CV (Stage)</a>
-          <a href="CV_Yanis_Dutilleul_Stage.pdf" target="_blank" id="cvFullscreenBtn" class="btn-outline">↗ Plein écran</a>
-        </div>
-      </div>
-
-      <div class="cv-preview">
-        <div class="cv-frame">
-          <iframe id="cvIframe" src="CV_Yanis_Dutilleul_Stage.pdf" title="CV Yanis Dutilleul - Stage"></iframe>
-          <div class="cv-frame-overlay">
-            <a href="CV_Yanis_Dutilleul_Stage.pdf" target="_blank" id="cvOverlayBtn" class="cv-open-btn">↗ Ouvrir le document</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
+  <!-- ═══ PIED DE PAGE ═══ -->
   <footer>
-    <span>© 2026 Yanis <strong>Dutilleul</strong> · Portfolio Data &amp; Informatique</span>
-    <nav class="footer-nav">
+    <img class="foot-emblem" src="logo-192.png" alt="" width="54" height="54" loading="lazy" />
+    <div class="foot-name">Yanis Dutilleul</div>
+    <p class="foot-motto">« Des données brutes naissent les décisions éclairées. »</p>
+    <nav class="foot-nav" aria-label="Liens de pied de page">
       <a href="index.html">Accueil</a>
       <a href="projets.html">Projets</a>
       <a href="contact.html">Contact</a>
-      <a href="mentions-legales.html">Mentions Légales</a>
+      <a href="mentions-legales.html">Mentions légales</a>
     </nav>
+    <div class="foot-social">
+      <a href="https://www.linkedin.com/in/yanis-dutilleul-544088357/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+      <a href="https://github.com/Kisytloa" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg></a>
+      <a href="mailto:yanisdutilleul21112006@gmail.com" aria-label="E-mail"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.5l10 6.25L22 6.5V6H2zm20 2.86-10 6.25L2 8.86V18h20V8.86z"/></svg></a>
+    </div>
+    <p class="foot-copy">© <span data-year>2026</span> Yanis Dutilleul · Portfolio Data &amp; Informatique · Forgé à la main, sans framework.</p>
   </footer>
 
   <script src="script.js"></script>
